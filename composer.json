@@ -1,0 +1,24 @@
+{
+    "name": "sbts-gretametehorr/online-store-poo",
+    "description": "Boutique en ligne - POO - MVC",
+    "authors": [
+        {
+            "name": "Flavien GROISILLIER",
+            "email": "formulacab@gmail.com"
+        },
+        {
+            "name": "Jonathan ROUGIER",
+            "email": "email@gmail.com"
+        },
+        {
+            "name": "Soufiane BOULEIL",
+            "email": "email@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-0": {
+            "": ["controllers/", "models/", "views/", "./"]
+        }
+    }
+}
