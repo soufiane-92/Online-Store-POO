@@ -27,6 +27,7 @@ foreach ($routes as $url => $action) {
           $params = 1;
         }
         $controller = new $action[0];
+       
         $controller->{$action[1]}($params);
         break;
     }
