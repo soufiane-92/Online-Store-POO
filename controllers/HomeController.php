@@ -1,15 +1,28 @@
 <?php
-
-class HomeController
+class HomeController extends Controller
 {
 
-    public function index($params = 1)
+    public function index()
     {
       // print("je suis dans la méthode index de la class HomeContriller");
       // print_r($params);
-        $client = Client::returnData('id', $params);
-        // $client = Client::returnData('id', 1);
 
-        include 'views/home.php';
+
+        // On instancie le model "Produit"
+        $this->getModel('Produit');
+
+        // On creer le tableau de tous nos produits
+        $produits = $this->Produit->getAll();
+
+        // var_dump($produits);
+
+        // include 'views/home.php';
+        // $this->getView("home");
+        // $view = new View;
+        // $view->getView("home");
+
+        $this->getView('home', $produits);
+        // $view->getView;
+        // var_dump($view);
     }
 }

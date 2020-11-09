@@ -1,12 +1,12 @@
 <?php
 
-class Client extends Model
+class Administrateur extends Model
 {
 
   public function __construct()
   {
     // Table par défaut pour notre modèle
-    $this->table = "client";
+    $this->table = "administrateur";
     // Connexion à la DB
     $this->getConnection();
   }
