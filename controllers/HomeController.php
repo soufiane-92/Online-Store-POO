@@ -6,7 +6,14 @@ class HomeController extends Controller
     {
       // print("je suis dans la méthode index de la class HomeContriller");
       // print_r($params);
+        $nom = 'Jonathan';
 
+        //On instancie une session et on lui attribut un nom
+        $session = new Session(session_start());
+        $session->set('name', $nom);
+
+        print($session->get('name'));
+        session_destroy();
 
         // On instancie le model "Produit"
         $this->getModel('Produit');
