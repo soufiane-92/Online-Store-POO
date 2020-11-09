@@ -15,7 +15,9 @@
             "email": "email@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "vlucas/phpdotenv": "^5.2"
+    },
     "autoload": {
         "psr-0": {
             "": ["app/","controllers/", "models/", "views/", "./"]
