@@ -26,8 +26,14 @@ foreach ($routes as $url => $action) {
         } else {
           $params = 1;
         }
+
         $controller = new $action[0];
         $controller->{$action[1]}($params);
+
+        // Exemple:
+        // $controller = new HomeController;
+        // $controller->index($params);
+
         break;
     }
 }
