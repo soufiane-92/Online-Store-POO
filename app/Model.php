@@ -22,7 +22,7 @@ abstract class Model{
     $this->_connexion = null;
     // On essaie de se connecter à la DB
     try{
-      $this->_connexion = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+      $this->_connexion = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username);
       $this->_connexion->exec("set names utf8");
     }catch(PDOException $exception){
       echo "Erreur de connexion : " . $exception->getMessage();

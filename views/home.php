@@ -6,9 +6,9 @@
 <body>
 
   <div>
+    <h1>Ma vue Home</h1>
     <?php
-    var_dump($produits);
-    foreach( $produits as $produit)
+    foreach($allData as $produit)
     {
       $id = $produit['id'];
       $description = $produit['description'];
