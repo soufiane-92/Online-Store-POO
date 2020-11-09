@@ -11,16 +11,7 @@
 
     <title>La Boutique</title>
   </head>
-  <body>
-    <div class="container">
-    <?php include_once 'layout/header.php' ?>
-   
-    <?php include_once 'layout/footer.php' ?>
-    </div>
-  </body>
-</html>
-
-
+<body>
 
 
 <!-- <!DOCTYPE html>
