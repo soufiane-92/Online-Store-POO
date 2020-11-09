@@ -1,12 +1,12 @@
 <?php
 
-class Client extends Model
+class Produit extends Model
 {
 
   public function __construct()
   {
     // Table par défaut pour notre modèle
-    $this->table = "client";
+    $this->table = "produit";
     // Connexion à la DB
     $this->getConnection();
   }
@@ -17,10 +17,10 @@ class Client extends Model
    * @return void
    */
   public function getAll(){
-      $sql = "SELECT * FROM ".$this->table;
-      $query = $this->_connexion->prepare($sql);
-      $query->execute();
-      return $query->fetchAll();
+    $sql = "SELECT * FROM ".$this->table;
+    $query = $this->_connection->prepare($sql);
+    $query->execute();
+    return $query->fetchAll();
   }
 
 }
