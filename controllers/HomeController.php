@@ -14,12 +14,15 @@ class HomeController extends Controller
         // On creer le tableau de tous nos produits
         $produits = $this->Produit->getAll();
 
-        var_dump($produits[0]);
-        include 'views/home.php';
+        // var_dump($produits);
+
+        // include 'views/home.php';
         // $this->getView("home");
         // $view = new View;
-        //
         // $view->getView("home");
+
+        $this->getView('home', $produits);
+        // $view->getView;
         // var_dump($view);
     }
 }

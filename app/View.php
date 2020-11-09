@@ -1,11 +1,12 @@
 <?php
 class View{
 
-    public function getView(string $view){
-        // On va chercher le fichier correspondant a la vue souhaité est creer le Layout
-        include('views/layout/header.php');
-        include('views/'.$view.'.php');
-        include('views/layout/footer.php');
-    }
+    public $allData;
 
+    public function getView($view, $allData){
+      $this->data = $allData;
+      require_once('views/layout/header.php');
+      require_once('views/'.$view.'.php');
+      require_once('views/layout/footer.php');
+    }
 }
