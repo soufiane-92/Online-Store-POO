@@ -1,7 +1,6 @@
 <?php
 class HomeController extends Controller
 {
-
     public function index()
     {
       // print("je suis dans la méthode index de la class HomeContriller");
@@ -28,8 +27,11 @@ class HomeController extends Controller
         // $view = new View;
         // $view->getView("home");
 
-        $this->getView('home', $produits);
+
+        
+        $this->getView('home');
         // $view->getView;
         // var_dump($view);
     }
+  
 }

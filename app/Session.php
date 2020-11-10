@@ -2,14 +2,16 @@
 
 class Session
 {
+    static $test;
     public $session;
 
     public function __construct($session)
     {
         $this->session = $session;
+        self::$test = $this;
     }
 
-    public function set($name, $value)
+    public function set(string $name, $value)
     {
         $_SESSION[$name] = $value;
     }
