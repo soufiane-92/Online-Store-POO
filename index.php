@@ -5,6 +5,7 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 $routes = array(
+    "/\/(login)\/?(\d+)?/" => array('LoginController', 'index'),
     "/\/(register)\/?(\d+)?/" => array('RegisterController', 'index'),
     '//' => array('HomeController', 'index')
 );
