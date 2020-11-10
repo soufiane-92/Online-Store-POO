@@ -11,7 +11,8 @@ if(!isset($_SESSION)) {
 
 $routes = array(
     "/\/(catalogue)\/?(\d+)?/" => array('CatalogueController', 'index'),
-   '//' => array('HomeController', 'index'),
+    "/\/(register)\/?(\d+)?/" => array('RegisterController', 'index'),
+    '//' => array('HomeController', 'index')
 );
 
 // print("je suis dans l'index.php");

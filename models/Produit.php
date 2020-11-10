@@ -11,16 +11,4 @@ class Produit extends Model
     $this->getConnection();
   }
 
-  /**
-   * Méthode qui récupére tous les enregistrements de la table choisie dans le constructeur
-   *
-   * @return void
-   */
-  public function getAll(){
-    $sql = "SELECT * FROM ".$this->table;
-    $query = $this->_connection->prepare($sql);
-    $query->execute();
-    return $query->fetchAll();
-  }
-
 }
