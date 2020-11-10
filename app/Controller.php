@@ -1,7 +1,8 @@
 <?php
 
-abstract class Controller extends View{
+use \app\Session;
 
+abstract class Controller extends View {
     public function getModel(string $model){
         // On va chercher le fichier correspondant au modèle souhaité
         require_once('models/'.$model.'.php');

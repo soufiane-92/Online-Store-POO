@@ -1,5 +1,7 @@
-   
-    <?php include_once 'layout/footer.php' ?>
+
+       
+      
+      </div>
     </div>
   </body>
 </html>
