@@ -23,20 +23,39 @@ abstract class AuthModel {
     }
   }
 
+
+  /**
+   * Méthode qui récupére tous les enregistrements de la table choisie dans le constructeur
+   *
+   * @return void
+   */
+  public function getAuth($email){
+    $sql = "SELECT * FROM ".$this->table." WHERE email = ?";
+    $query = $this->_connection->prepare($sql);
+    $query->execute([$email]);
+    return $query->fetch();
+  }
+
   /**
    * Méthode qui récupére tous les enregistrements de la table choisie dans le constructeur
    *
    * @return void
    */
   public function checkAuth($email, $pwd){
-    print(" dans class checkAuth");
-
-    $sql = "SELECT * FROM ".$this->table." WHERE email = ? AND password = ?";
+    // print(" dans class checkAuth");
+    $sql = "SELECT password FROM ".$this->table." WHERE email = ?";
     $query = $this->_connection->prepare($sql);
-    $query->execute([$email, $pwd]);
-    return $query->fetch();
+    $query->execute([$email]);
+    $authExist = $query->fetch();
+    if ($authExist && password_verify($pwd, $authExist[0])) {
+      $response = true;
+    }
+    else
+    {
+      $response = false;
+    }
+    return $response;
   }
-
   /**
    * Méthode qui récupére tous les enregistrements de la table choisie dans le constructeur
    *

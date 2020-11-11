@@ -1,0 +1,111 @@
+:root {
+    --main-text-color: #556052;
+    --main-bg-color: #f2efea;
+    --bg-block: #af6b58;
+    --bg-border-block: #aa624e;
+}
+
+*:before,
+*:after,
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+body {
+    background-color: var(--main-bg-color);
+    color:  var(--main-text-color);
+    font-size: 1.8rem;
+}
+/* Main container block ------------- */
+/* .container {
+    padding: 2rem;
+    width: 100%;
+} */
+/* header block ------------- */
+.header__title {
+    font-size: 3rem;
+   
+}
+.header__user {
+    font-weight: bold;
+}
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.article__image {
+    width: 100%;
+    max-height: 19rem;
+}
+/*
+header ul li {
+    display: inline-block;
+    list-style: none;
+    margin-left: 2rem;
+}
+header a{
+    text-decoration: none;
+    color: inherit;
+}
+.header__title {
+    width: 40vw;
+}
+
+.header__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 60vw;
+}
+.header__nav--tab {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.header__nav--register{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.container__home {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 3rem;
+}
+.home__categories {
+    display: flex;
+    flex-direction: column;
+    min-height: 25rem;
+    padding: 1.5rem;
+    background-color:  var(--bg-block);
+    color:  var(--main-bg-color);
+    width: 20vw;
+    border: 1px solid var(--bg-border-block);
+    border-radius: 3px;
+}
+.home__categories--title {
+    display: flex;
+    flex-direction: row;
+   justify-content: center;
+}
+.home__categories--list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+}
+
+.home__articles {
+    display: flex;
+    flex-direction: row;
+    width: 60vw;
+} */

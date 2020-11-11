@@ -6,17 +6,15 @@ Email:<br>
 Password:<br>
 <input type="password" name="password">
 <br><br>
-<input type="submit" value="Submit">
+<input type="submit" name="Submit" value="Submit">
 </form>
-<?php //$_SESSION['Flash'] = ['erreur1', 'erreur2', 'erreur3']; ?>
-
-<?php if(isset($_SESSION['Flash'])){?>
-<div class="danger">
-  <?php foreach($_SESSION['Flash'] as $key => $val){?>
+<?php if(isset($_SESSION['flash'])){?>
+<div class="alert alert-danger">
+  <strong>Attention !</strong> 
     <ul>
+      <?php foreach($_SESSION['flash'] as $key => $val){?>
       <li> <?= $this->$key = $val ?></li>
+    <?php }?>
     </ul>
-  <?php }?>
-
 </div>
-<?php }?>
+<?php Session::remove('flash') ; }?>

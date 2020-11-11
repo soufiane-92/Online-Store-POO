@@ -4,39 +4,75 @@ class LoginController extends Controller
 {
   public function index()
   {
+
     $this->getView('authentication/login', array());
-    if ($_POST['email']) {
-      //On instancie une session et on lui attribut un nom
-      if (!$session) {
-        $session = new Session(session_start());
-      }
-      $session->set('Flash', "");
+
+    if ($_POST['Submit']) {
 
       $this->check_client_auth();
     }
   }
 
-   public function check_client_auth(){
-
-     $email = $_POST['email'];
-     $pwd   = $_POST['password'];
+  public function check_client_auth(){
 
 
-    $auth = new Auth;
-    $auth = $auth->checkAuth($email, $pwd);
-
-    if(!$auth){
-
-      // echo 'Identifiant ou Mot de Passe incorrect.';
-         $session->set('Flash', ['erreur1', 'erreur2', 'erreur3']);
-
+    function secureData($data, $typeData = "") {
+      if($typeData != "password") $data = trim($data);
+      $data = stripslashes($data);
+      $data = htmlspecialchars($data);
+      return $data;
     }
-    else{
-      print(" dans else check_client_auth");
-
-
+    function valid_email($str) {
+      return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? FALSE : TRUE;
     }
-    // header('location:home');
+
+
+    $erreurs = array();
+    $email = secureData($_POST['email'], "text");
+    $pwd   = secureData($_POST['password'], "password");
+
+    if(!isset($email) || empty($email)){
+      array_push($erreurs, "Champ email obligatoire.");
+    } else {
+      if (!valid_email($email)){
+        array_push($erreurs, "Format d'email invalide");
+      }
+    }
+
+    if(!isset($pwd)  || empty($pwd)){
+      array_push($erreurs, "Champ mot de passe obligatoire.");
+    }
+
+    // print_r($erreurs);
+
+    if (count($erreurs) > 0) {
+
+      Session::$currentSession->set("flash", $erreurs);
+      // print_r($_SESSION);
+
+      header('location:login');
+
+    } else
+    {
+      $tempAuth = new Auth;
+      $tempAuth = $tempAuth->checkAuth($email, $pwd);
+
+      if(!$tempAuth)
+      {
+        array_push($erreurs, "Authentification incorrecte.");
+        Session::$currentSession->set("flash", $erreurs);
+
+      }
+      else
+      {
+        $auth = new Auth;
+        $auth = $auth->getAuth($email, $pwd);
+        Session::$currentSession->set("auth", $auth);
+      }
+      // header('location:home');
+    }
+
+
   }
 
 }

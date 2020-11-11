@@ -7,7 +7,6 @@ class Auth extends AuthModel
 
   public function __construct()
   {
-    print(" dans class Auth");
     // Table par défaut pour notre modèle
     $this->table = "clients";
     // Connexion à la DB
