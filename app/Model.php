@@ -32,7 +32,7 @@ abstract class Model {
     $sql = "SELECT * FROM ".$this->table;
     $query = $this->_connection->prepare($sql);
     $query->execute();
-    return $query->fetchAll();
+    return $query->fetchAll(PDO::FETCH_ASSOC);
   }
 
   /**
@@ -41,13 +41,10 @@ abstract class Model {
    * @return void
    */
   public function getOne($key, $value){
-    print($key);
-    print($value);
-
     $sql = "SELECT * FROM ".$this->table." WHERE $key = '$value'";
     $query = $this->_connection->prepare($sql);
     $query->execute();
-    return $query->fetchAll();
+    return $query->fetch(PDO::FETCH_ASSOC);
   }
 
   /**

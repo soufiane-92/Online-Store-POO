@@ -8,7 +8,6 @@ class LoginController extends Controller
     $this->getView('authentication/login', array());
 
     if ($_POST['Submit']) {
-
       $this->check_client_auth();
     }
   }
@@ -43,34 +42,33 @@ class LoginController extends Controller
       array_push($erreurs, "Champ mot de passe obligatoire.");
     }
 
-    // print_r($erreurs);
+    print_r(count($erreurs));
 
     if (count($erreurs) > 0) {
 
       Session::$currentSession->set("flash", $erreurs);
       // print_r($_SESSION);
 
-      header('location:login');
 
     } else
     {
-      $tempAuth = new Auth;
-      $tempAuth = $tempAuth->checkAuth($email, $pwd);
+      $auth = new Auth;
+      print(" else Auth ? ==>");
 
-      if(!$tempAuth)
+      if($auth->checkAuth($email, $pwd) == null)
       {
         array_push($erreurs, "Authentification incorrecte.");
         Session::$currentSession->set("flash", $erreurs);
-
       }
       else
       {
-        $auth = new Auth;
-        $auth = $auth->getAuth($email, $pwd);
+        $auth = $auth->User($email, $pwd);
         Session::$currentSession->set("auth", $auth);
+        header('location:catalogue');
+        die();
       }
-      // header('location:home');
     }
+    header('location:login');
 
 
   }

@@ -14,7 +14,7 @@ class CatalogueController extends Controller
 
         $this->getModel('Produit');
         // get the client for the header authentification
-        Session::$currentSession->set("Auth", "Mec bizarre ");
+        // Session::$currentSession->set("Auth", "Mec bizarre ");
         // var_dump($produits);
 
         // include 'views/home.php';
@@ -25,7 +25,6 @@ class CatalogueController extends Controller
         $this->getModel('Produit');
         $produits = $this->Produit->getAll();
         $this->getView('catalogue', $produits);
-
 
       // On creer le tableau de tous nos produits
       // $data = ['produits' => $produits, 'categories' => $categories]

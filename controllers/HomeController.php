@@ -9,7 +9,7 @@ class HomeController extends Controller
         // //On instancie une session et on lui attribut un nom
         // $session = new Session(session_start());
         // $session->set('name', 'Flash');
-
+        // Session::stop();
         // print($session->get('name'));
         // session_destroy();
 
@@ -20,18 +20,26 @@ class HomeController extends Controller
         $produits = $this->Produit->getAll();
         $produit = $this->Produit->getOne("id","c03");
 
-        var_dump($produit);
+// **************   test Ajouter dans Panier   ***************
+        // new Panier;
+// **************   test Ajouter dans Panier   ***************
+        // Panier::add("c01", 1);
+        // Panier::add("c02", 1);
+        // Panier::add("c03", 2);
+        // Panier::add("c04", 1);
+        // Panier::add("c05", 4);
+        // Panier::add("c06", 1);
+// **************   test Supprimer element du Panier   ***************
+      // Panier::remove("c01");
+// **************   test Supprimer tout le Panier   ***************
+      // Panier::delete();
+// **************   recupere tout les produits du panier   ***************
+        var_dump(Panier::show());
+// **************   recupere liste idProduit et quantité du panier   ***************
+        var_dump(Panier::get());
+// ************************************************************************************
 
-        // include 'views/home.php';
-        // $this->getView("home");
-        // $view = new View;
-        // $view->getView("home");
-
-
-        
         $this->getView('home');
-        // $view->getView;
-        // var_dump($view);
     }
-  
+
 }

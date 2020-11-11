@@ -38,7 +38,7 @@ class RegisterController extends Controller
     } else {
       if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) {
         array_push($erreurs, "Mot de passe de 8 caractères minimum.");
-        array_push($erreurs, "Mot de passe contenant au moins 1 Majuscule et un Nombre.");
+        array_push($erreurs, "Mot de passe contenant au moins une Majuscule et un Nombre.");
       }
     }
 

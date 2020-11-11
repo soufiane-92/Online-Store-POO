@@ -8,13 +8,14 @@ Password:<br>
 <br><br>
 <input type="submit" name="Submit" value="Submit">
 </form>
-<?php if(isset($_SESSION['flash'])){?>
+<?php if(Session::get('flash') !== null){?>
 <div class="alert alert-danger">
-  <strong>Attention !</strong> 
+  <strong>Attention !</strong>
     <ul>
-      <?php foreach($_SESSION['flash'] as $key => $val){?>
-      <li> <?= $this->$key = $val ?></li>
+      <?php foreach(Session::get('flash') as $val){?>
+      <li> <?= $val ?></li>
     <?php }?>
     </ul>
 </div>
+
 <?php Session::remove('flash') ; }?>

@@ -7,7 +7,7 @@ $dotenv->load();
 if(!isset($_SESSION)) {
   new Session(session_start());
 }
-var_dump($_SESSION['auth']);
+// var_dump($_SESSION['auth']);
 $routes = array(
     "/\/(catalogue)\/?(\d+)?/" => array('CatalogueController', 'index'),
     "/\/(register)\/?(\d+)?/" => array('RegisterController', 'index'),
