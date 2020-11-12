@@ -10,5 +10,4 @@ class Produit extends Model
     // Connexion à la DB
     $this->getConnection();
   }
-
 }

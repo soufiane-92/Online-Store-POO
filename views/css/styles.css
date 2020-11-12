@@ -30,7 +30,7 @@ body {
 /* header block ------------- */
 .header__title {
     font-size: 3rem;
-   
+
 }
 .header__user {
     font-weight: bold;
@@ -43,6 +43,9 @@ body {
 .article__image {
     width: 100%;
     max-height: 19rem;
+}
+.class_active{
+  background-color: #007bff;
 }
 /*
 header ul li {

@@ -3,7 +3,7 @@
   $id = $produit['id'];
   $description = $produit['description'];
   $prix=$produit['prix'];
-  $image = $produit['image'];
+  $image = $url->getUrlInfo()[0] . $produit['image'];
   ?>
     <form action=<?php echo $_SERVER['REQUEST_URI'] ?> method="post">
   <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mt-3">
@@ -21,8 +21,8 @@
               <?php for($i=1; $i <= 30; $i++) {?>
                 <option value=<?php echo $i; ?> ><?php echo $i; ?></option>
               <?php } ?>
-            </select> 
-            
+            </select>
+
           </div>
         </div>
       </div>

@@ -9,7 +9,8 @@ if(!isset($_SESSION)) {
 }
 // var_dump($_SESSION['auth']);
 $routes = array(
-    "/\/(catalogue)\/?(\d+)?/" => array('CatalogueController', 'index'),
+    "/\/(catalogue)\/(.+)/" => array('CatalogueController', 'categorie'),
+    "/\/(catalogue)\/?/" => array('CatalogueController', 'index'),
     "/\/(register)\/?(\d+)?/" => array('RegisterController', 'index'),
     "/\/(login)\/?(\d+)?/" => array('LoginController', 'index'),
     "/\/(logout)\/?(\d+)?/" => array('LogoutController', 'index'),

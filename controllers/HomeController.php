@@ -30,15 +30,14 @@ class HomeController extends Controller
         // Panier::add("c05", 4);
         // Panier::add("c06", 1);
 // **************   test Supprimer element du Panier   ***************
-      // Panier::remove("c01");
+      // Panier::remove("c0wvxcv6");
 // **************   test Supprimer tout le Panier   ***************
       // Panier::delete();
 // **************   recupere tout les produits du panier   ***************
-        var_dump(Panier::show());
+        // var_dump(Panier::show());
 // **************   recupere liste idProduit et quantité du panier   ***************
         var_dump(Panier::get());
 // ************************************************************************************
-
         $this->getView('home');
     }
 

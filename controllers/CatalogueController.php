@@ -3,31 +3,28 @@ class CatalogueController extends Controller
 {
     public function index()
     {
-        // if( isset($_POST['submit'])){
-        //     var_dump($_POST);
-        //     var_dump($_SESSION);
+      $this->getModel('Produit');
+      $produits = $this->Produit->getAll();
+      $this->getView('catalogue', $produits);
+    }
 
-        //     die();
-        //   }
+    public function categorie($value)
+    {
+      function secureData($data, $typeData = "") {
+        if($typeData != "password") $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+      }
+      $this->getModel('Categorie');
+      $categorie = new Categorie;
+      // var_dump($categorie->getOne("libelle",$value)['id']);
 
-        // $session = new Session(session_start());
-
-        $this->getModel('Produit');
-        // get the client for the header authentification
-        // Session::$currentSession->set("Auth", "Mec bizarre ");
-        // var_dump($produits);
-
-        // include 'views/home.php';
-        // $this->getView("home");
-        // $view = new View;
-        // $view->getView("home");
-
-        $this->getModel('Produit');
-        $produits = $this->Produit->getAll();
-        $this->getView('catalogue', $produits);
-
-      // On creer le tableau de tous nos produits
-      // $data = ['produits' => $produits, 'categories' => $categories]
-
-        }
+      if($this->Categorie->getOne("libelle",secureData($value))['id']){
+        $produits = $this->Categorie->getAllProductsByCategorie($this->Categorie->getOne("libelle",secureData($value))['id']);
+      } else {
+        header('location:home');
+      }
+      $this->getView('catalogue', $produits);
+    }
 }
