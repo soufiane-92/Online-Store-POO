@@ -1,15 +1,15 @@
-<div class="plr_30">
-
-  <h1 class="my-4">Filtrer par Categorie</h1>
-  <div class="list-group">
+<div class="row">
+  
+  <h1 class="ml-5 my-4">Catégories</h1>
+  <div class="col-12">
     <?php
-    $url = new Url;
-    $allCategories = new Categorie;
-    $allCategories = $allCategories->getAll();
-    foreach($allCategories as $categorie)
-    {
-      ?>
-      <a href="<?= $url->getUrlInfo()[0] . 'catalogue/' . strtolower($categorie['libelle']) ?>" class="list-group-item"  <?= ($url->getUrlInfo()[0] . 'catalogue/' . strtolower($categorie['libelle']) === $url->getUrlInfo()[1]) ? "style='background-color: #007bff; color: #FFF;'" : "" ?> ><?= $categorie['libelle'] ?></a>
-    <?php  } ?>
+    $categories = new Categorie;
+    $allCategories = $categories->getAll() ?? [];
+
+    ?>
+    <?php foreach($allCategories as $categorie): ?>
+     
+     <li><a href="<?= Application::$root . 'catalogue/' ?>" ><?= $categorie['libelle'] ?></a></li>
+    <?php  endforeach ?>
   </div>
 </div>

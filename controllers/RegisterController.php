@@ -59,7 +59,7 @@ class RegisterController extends Controller
     }
 
     if (count($erreurs) > 0) {
-      Session::$currentSession->set("flash", $erreurs);
+      Session::set("flash", $erreurs);
       header('location:register');
 
     } else {

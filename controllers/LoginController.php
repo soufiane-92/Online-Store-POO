@@ -46,7 +46,7 @@ class LoginController extends Controller
 
     if (count($erreurs) > 0) {
 
-      Session::$currentSession->set("flash", $erreurs);
+      Session::set("flash", $erreurs);
       // print_r($_SESSION);
 
 
@@ -58,12 +58,13 @@ class LoginController extends Controller
       if($auth->checkAuth($email, $pwd) == null)
       {
         array_push($erreurs, "Authentification incorrecte.");
-        Session::$currentSession->set("flash", $erreurs);
+        Session::set("flash", $erreurs);
       }
       else
       {
         $auth = $auth->User($email, $pwd);
-        Session::$currentSession->set("auth", $auth);
+        Session::set("auth", $auth);
+        $_SESSION['auth'] = 
         header('location:catalogue');
         die();
       }

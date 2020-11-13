@@ -4,10 +4,18 @@ require_once 'vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-if(!isset($_SESSION)) {
-  new Session(session_start());
+$app = new Application(__DIR__);
+
+
+if(!isset($_SESSION)) 
+    { 
+        session_start();
+        
 }
-// var_dump($_SESSION['auth']);
+if(!Session::get('panier')) {
+  new Panier();
+}
+
 $routes = array(
     "/\/(catalogue)\/(.+)/" => array('CatalogueController', 'categorie'),
     "/\/(catalogue)\/?/" => array('CatalogueController', 'index'),
@@ -17,8 +25,8 @@ $routes = array(
     '//' => array('HomeController', 'index')
 );
 
-// print("je suis dans l'index.php");
-// var_dump($routes);
+// print(Application::$root);
+
 
 foreach ($routes as $url => $action) {
 

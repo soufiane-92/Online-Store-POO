@@ -2,14 +2,8 @@
 
 class Panier extends Model
 {
-  public $panier;
-  public function __construct()
-  {
-    if(Session::get("panier") == null){
-      Session::set("panier", $panier);
-    }
-    $this->panier = Session::get("panier");
-
+  public $panier = [];
+  
     // var_dump($this->panier);
     // $secure = false; // recevoir les cookies uniquement en HTTPS
     // $httponly = false; // évite accès de la session par scripte JavaScript
@@ -29,16 +23,20 @@ class Panier extends Model
     // }
     //
     // setcookie('panier', $panier, time() + 3600, '/', $_SERVER['HTTP_HOST']);
-  }
-
-  public function get()
+  public function __construct()
   {
-    if (Session::get("panier") != null) {
-      return Session::get("panier");
-    }
+   Session::set('panier', $data = []);
   }
 
-  public function show()
+  static public function get()
+  {
+    // if (Session::get("panier") != null) {
+    //   return Session::get("panier");
+    // }
+    return $_SESSION['panier'];
+  }
+
+  static public function show()
   {
     if (Session::get("panier") != null){
       $toutLesProduits = array();
@@ -54,7 +52,7 @@ class Panier extends Model
     }
   }
 
-  public function add(string $idProduit,int $quantite)
+  static public function add(string $idProduit,int $quantite)
   {
     if (isset($_SESSION['panier'])){
       $produit = new Produit;
@@ -64,7 +62,7 @@ class Panier extends Model
     }
   }
 
-  public function remove($idProduit)
+  static public function remove($idProduit)
   {
     // parcourt le tableau panier est suprime le produit ayant la $key = $idProduit
 
@@ -77,7 +75,7 @@ class Panier extends Model
     }
   }
 
-  public function delete()
+  static public function delete()
   {
     if (isset($_SESSION['panier'])){
       Session::stop("panier");

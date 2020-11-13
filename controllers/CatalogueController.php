@@ -5,6 +5,7 @@ class CatalogueController extends Controller
     {
       $this->getModel('Produit');
       $produits = $this->Produit->getAll();
+      
       $this->getView('catalogue', $produits);
     }
 
