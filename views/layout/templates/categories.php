@@ -1,6 +1,6 @@
 <div class="row">
   
-  <h1 class="ml-5 my-4">Catégories</h1>
+  <h1 class="ml-5 my-4 block_green">Catégories</h1>
   <div class="col-12 p-5">
     <?php
     $categories = new Categorie;

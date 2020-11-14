@@ -55,7 +55,16 @@ header a {
 .class_active{
   background-color: #007bff;
 }
-
+/* Buttons */
+.btn-green {
+    color: var(--secondary-bg-color);
+    background-color: var(--text-green);
+}
+/* block deco */ 
+.block_green {
+    border: solid 2px var(--text-green);
+    padding: 1rem;
+}
 /* Home ----------------- */
 .home {
     min-height: 35rem;
