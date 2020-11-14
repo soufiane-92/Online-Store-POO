@@ -1,5 +1,5 @@
 <?php
-
+include  './utils/functions.php';
 class LoginController extends Controller
 {
   public function index()
@@ -13,18 +13,6 @@ class LoginController extends Controller
   }
 
   public function check_client_auth(){
-
-
-    function secureData($data, $typeData = "") {
-      if($typeData != "password") $data = trim($data);
-      $data = stripslashes($data);
-      $data = htmlspecialchars($data);
-      return $data;
-    }
-    function valid_email($str) {
-      return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? FALSE : TRUE;
-    }
-
 
     $erreurs = array();
     $email = secureData($_POST['email'], "text");

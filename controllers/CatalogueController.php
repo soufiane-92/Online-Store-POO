@@ -1,4 +1,5 @@
 <?php
+include  './utils/functions.php';
 class CatalogueController extends Controller
 {
     public function index()
@@ -9,23 +10,31 @@ class CatalogueController extends Controller
       $this->getView('catalogue', $produits);
     }
 
-    public function categorie($value)
+    public function categorie()
     {
-      function secureData($data, $typeData = "") {
-        if($typeData != "password") $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
+      $url = $_SERVER['REQUEST_URI'];
+      $tokens = explode('/', $url);
+      $value = $tokens[sizeof($tokens)-1];
+      $getPositionEqual = strpos($value, '=');
+      if($getPositionEqual === false) {
+        return redirectErrorPage();
+      } else {
+        $value = substr_replace($value, '', 0, $getPositionEqual + 1);
       }
+      if(!verifUrl($value, ['Composition', 'Fleurs', 'Plantes'])) {
+        return redirectErrorPage();
+      }
+      
+      
       $this->getModel('Categorie');
       $categorie = new Categorie;
-      // var_dump($categorie->getOne("libelle",$value)['id']);
-
       if($this->Categorie->getOne("libelle",secureData($value))['id']){
+        
         $produits = $this->Categorie->getAllProductsByCategorie($this->Categorie->getOne("libelle",secureData($value))['id']);
       } else {
-        header('location:home');
+        return redirectErrorPage();
       }
+      
       $this->getView('catalogue', $produits);
     }
 }

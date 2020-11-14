@@ -1,4 +1,5 @@
 <?php
+include  './utils/functions.php';
 
 class RegisterController extends Controller
 {
@@ -11,16 +12,6 @@ class RegisterController extends Controller
   }
 
    public function check_client_if_exist(){
-     function secureData($data, $typeData = "") {
-       if($typeData != "password") $data = trim($data);
-       $data = stripslashes($data);
-       $data = htmlspecialchars($data);
-       return $data;
-     }
-     function valid_email($str) {
-       return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? FALSE : TRUE;
-     }
-
     $erreurs = array();
 
     $name      = secureData($_POST['nom'],"text");
@@ -92,7 +83,7 @@ class RegisterController extends Controller
         // $this->Client->update('1', $data);
 
       }
-      // header('location:home');
+      header('location:home');
     }
   }
 

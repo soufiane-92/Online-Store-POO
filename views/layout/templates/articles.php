@@ -14,7 +14,7 @@
         <p class="card-text ellipsis"><?php echo $nom ?></p>
         <div class="row">
           <div class="col-6">
-            <button type="submit" name="submit_" class="btn btn-primary">Ajouter au panier</button>
+            <button type="submit" name="submit" class="btn btn-green">Ajouter au panier</button>
           </div>
           <div class="col-6 d-inline-flex justify-content-end">
             <select name="quantite">
