@@ -5,7 +5,7 @@ $isIdentified = $_SESSION['auth'] ?? false;
 
     <ul class="navbar-nav mx-auto">
         <li class="nav-item mr-5 header__user">
-        <span class="nav-link header__user"><?php echo $_SESSION['auth']['name']; ?></span>
+        <span class="nav-link header__user"><?php echo $_SESSION['auth']['nom']; ?></span>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="commande">Vos Commandes</a>

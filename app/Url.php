@@ -10,13 +10,11 @@ class Url
       // recupere: [dirname] => /mondossier dans un tableau grace à la fonction pathinfo
      
       $pathInfo = explode('/', pathinfo($currentUrl)['dirname']);
-   
       $path = '';
-      for ($i=0; $i < 1; $i++) {
-      // foreach($pathInfo as $part){
-
+      for ($i=0; $i < count($pathInfo); $i++) {
         $pathInfo[$i] .= "/";
         $path .=  $pathInfo[$i];
+
       }
       // print($path);
 

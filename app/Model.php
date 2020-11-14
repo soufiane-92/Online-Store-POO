@@ -73,6 +73,7 @@ abstract class Model {
       $array1 = "(" . $array1 . ")";
       $array2 = "(" . $array2 . ")";
 
+
       $sql = "INSERT INTO ".$this->table."  ".$array1." VALUES ".$array2;
       $query = $this->_connection->prepare($sql);
       $query->execute($array3);
