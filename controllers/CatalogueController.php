@@ -11,19 +11,17 @@ class CatalogueController extends Controller
       }
 
       if(isset($_POST["addToPanier"]) || isset($_POST["idProduit"]) || isset($_POST["quantite"])){
-        // if(!empty($_POST["idProduit"]) || !empty($_POST["quantite"])){
+        if(!empty($_POST["idProduit"]) || !empty($_POST["quantite"])){
           $id = secureData($_POST["idProduit"], "input");
           $quantite = secureData($_POST["quantite"], "input");
           new Panier;
           Panier::add($id, $quantite);
-
-          // die();
-        // }
+        }
       }
 
       $this->getModel('Produit');
       $produits = $this->Produit->getAll();
-      
+
       $this->getView('catalogue', $produits);
 
 
@@ -38,19 +36,19 @@ class CatalogueController extends Controller
         $data = htmlspecialchars($data);
         return $data;
       }
-      // if(isset($_POST["addToPanier"]) || isset($_POST["idProduit"]) || isset($_POST["quantite"])){
-        // if(!empty($_POST["idProduit"]) && !empty($_POST["quantite"])){
+      if(isset($_POST["addToPanier"]) || isset($_POST["idProduit"]) || isset($_POST["quantite"])){
+        if(!empty($_POST["idProduit"]) && !empty($_POST["quantite"])){
           $idProduit = $_POST["idProduit"];
           $quantite = $_POST["quantite"];
           if (Session::get('panier') != null){
             new Panier;
             print($idProduit);
             print($quantite);
-            die();
+            // die();
           }
           Panier::add($idProduit, $quantite);
-        // }
-      // }
+        }
+      }
 
 
 

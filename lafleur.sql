@@ -108,4 +108,3 @@ INSERT INTO `panier`(`idProduit`, `idCommande`, `quantite`) VALUES ('f05', '2', 
 
 INSERT INTO `admin`(`nom`, `password`) VALUES ('toto','toto');
 INSERT INTO `admin`(`nom`, `password`) VALUES ('titi','titi');
-

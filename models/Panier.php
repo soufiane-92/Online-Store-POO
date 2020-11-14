@@ -45,6 +45,7 @@ class Panier extends Model
       foreach(Session::get("panier") as $key => $value){
         if ($produit->getOne('id', $key)) {
           $toutLesProduits[$i] = $produit->getOne('id', $key);
+          $toutLesProduits[$i]['quantite'] = $value; 
           $i++;
         }
       }
@@ -54,12 +55,13 @@ class Panier extends Model
 
   static public function add(string $idProduit,int $quantite)
   {
-    if (Session::get('panier') != null){
-      $produit = new Produit;
-      if ($produit->getOne('id', $idProduit)) {
-        $_SESSION['panier'][$idProduit] = intval($quantite);
-      }
-    }
+    $_SESSION['panier'][$idProduit] = intval($quantite);
+
+    // if (Session::get('panier') != null){
+    //   $produit = new Produit;
+    //   if ($produit->getOne('id', $idProduit)) {
+    //   }
+    // }
   }
 
   static public function remove($idProduit)
