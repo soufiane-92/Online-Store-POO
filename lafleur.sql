@@ -19,15 +19,9 @@ CREATE TABLE IF NOT EXISTS CLIENT(
    prenom VARCHAR(100) NOT NULL,
    email VARCHAR(200) NOT NULL,
    password VARCHAR(200) NOT NULL,
-<<<<<<< HEAD
    codePostal VARCHAR(10) NULL,
    adresse VARCHAR(200) NULL,
    ville VARCHAR(200) NULL,
-=======
-   codePostal VARCHAR(10) NOT NULL,
-   adresse VARCHAR(200) NOT NULL,
-   ville VARCHAR(200) NOT NULL,
->>>>>>> 2c00fe6a648afc36dd908a2af9f1fb752c03cd41
    created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP(),
    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP(),
    PRIMARY KEY(id)
