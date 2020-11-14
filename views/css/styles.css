@@ -93,6 +93,26 @@ header a {
     padding: 1rem;
     margin: 0 0 3rem 0;
 }
+/* Error page */
+.error_page {
+    min-height: 45rem;
+}
+.error-template {
+    padding: 4rem 1.5rem;
+    text-align: center;
+    font-size: 2rem;
+}
+.error-template h1{
+    font-size: 4rem;
+    margin-bottom: 3rem;
+}
+.error-actions {
+    margin-top:1.5rem;
+    margin-bottom:1.5rem;
+}
+.error-actions .btnError { 
+    margin-right:10px; 
+}
 /* Footer ------------------ */
 footer {
     background-color: var(--main-text-color);
@@ -122,17 +142,7 @@ footer a:hover {
     border: solid 2px var(--main-bg-color);
     border-radius: 10px;
 }
-.error-template {
-    padding: 4rem 1.5rem;
-    text-align: center;
-}
-.error-actions {
-    margin-top:1.5rem;
-    margin-bottom:1.5rem;
-}
-.error-actions .btnError { 
-    margin-right:10px; 
-}
+
 .credit_image {
     font-size: 1.3rem;
 }
