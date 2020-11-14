@@ -3,8 +3,9 @@
 require_once 'vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
+$url = new Url();
 
-$app = new Application(__DIR__);
+$app = new Application($url->getUrlInfo()[0]);
 
 
 if(!isset($_SESSION)) 

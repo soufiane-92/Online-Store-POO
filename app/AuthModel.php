@@ -30,7 +30,7 @@ abstract class AuthModel {
    * @return void
    */
   public function User($email){
-    $sql = "SELECT client_id, name, firstName, email FROM ".$this->table." WHERE email = ?";
+    $sql = "SELECT id, nom, prenom, email FROM ".$this->table." WHERE email = ?";
     $query = $this->_connection->prepare($sql);
     $query->execute([$email]);
     return $query->fetch(PDO::FETCH_ASSOC);
@@ -108,7 +108,7 @@ abstract class AuthModel {
          array_push($array3, $val);
       }
 
-      $sql = "UPDATE ".$this->table." SET ".$array1." WHERE client_id = $id";
+      $sql = "UPDATE ".$this->table." SET ".$array1." WHERE id = $id";
 
       $query = $this->_connection->prepare($sql);
       $query->execute($array3);
