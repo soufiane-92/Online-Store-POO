@@ -22,6 +22,7 @@ class HomeController extends Controller
 
 // **************   test Ajouter dans Panier   ***************
         // new Panier;
+        // var_dump($panier);
 // **************   test Ajouter dans Panier   ***************
         // Panier::add("c01", 1);
         // Panier::add("c02", 1);
@@ -36,7 +37,8 @@ class HomeController extends Controller
 // **************   recupere tout les produits du panier   ***************
         // var_dump(Panier::show());
 // **************   recupere liste idProduit et quantité du panier   ***************
-        var_dump(Panier::get());
+        // var_dump(Panier::get());
+        // var_dump($_SESSION['panier']);
 // ************************************************************************************
         $this->getView('home');
     }

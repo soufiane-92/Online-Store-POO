@@ -3,11 +3,12 @@
 require_once 'vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
-
 if(!isset($_SESSION)) {
   new Session(session_start());
+  // if(!isset($_SESSION['panier'])) {
+  //   new Panier;
+  // }
 }
-// var_dump($_SESSION['auth']);
 $routes = array(
     "/\/(catalogue)\/(.+)/" => array('CatalogueController', 'categorie'),
     "/\/(catalogue)\/?/" => array('CatalogueController', 'index'),

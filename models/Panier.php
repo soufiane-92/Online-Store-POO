@@ -54,12 +54,12 @@ class Panier extends Model
     }
   }
 
-  public function add(string $idProduit,int $quantite)
+  public function add(string $idProduit,$quantite)
   {
-    if (isset($_SESSION['panier'])){
+    if (Session::get('panier') != null){
       $produit = new Produit;
       if ($produit->getOne('id', $idProduit)) {
-        $_SESSION['panier'][$idProduit] = $quantite;
+        $_SESSION['panier'][$idProduit] = intval($quantite);
       }
     }
   }
