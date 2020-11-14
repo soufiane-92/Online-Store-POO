@@ -56,11 +56,27 @@ header a {
 .class_active{
   background-color: #007bff;
 }
+/* list categories */
+.list-categories li a, .list-categories li a:hover {
+    color: inherit;
+}
+/* form -------------------- */
 .form__login {
     background-color: var(--secondary-bg-color);
     padding: 3.5rem;
     border: solid 2px var(--main-bg-color);
     border-radius: 10px;
+}
+.error-template {
+    padding: 4rem 1.5rem;
+    text-align: center;
+}
+.error-actions {
+    margin-top:1.5rem;
+    margin-bottom:1.5rem;
+}
+.error-actions .btnError { 
+    margin-right:10px; 
 }
 /*
 header ul li {
