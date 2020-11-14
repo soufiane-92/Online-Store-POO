@@ -8,7 +8,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="views/css/styles.css" >
+    <link rel="stylesheet" href="<?= Application::$root ?>views/css/styles.css" >
 
     <title>La Boutique</title>
   </head>
@@ -24,24 +24,21 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="home">Home</a>
+                        <a class="nav-link" href="<?= Application::$root ?>home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="catalogue">Catalogue</a>
+                        <a class="nav-link" href="<?= Application::$root ?>catalogue">Catalogue</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact">Contact</a>
+                        <a class="nav-link" href="<?= Application::$root ?>contact">Contact</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="panier">Panier: <?= Panier::get() !== 0 ? count(Panier::get()) : "0" ?>  Produit(s)</a>
+                        <a class="nav-link" href="<?= Application::$root ?>panier">Panier: <?= Panier::size(); ?>  Produit(s)</a>
                     </li>
                 </ul>
-
-        
-                <?php include Application::replaceSlash('views/layout/registerMenu.php') ?>
-                  
+                <?php  include 'views/layout/registerMenu.php' ?>
             </div>
         </nav>
     </header>

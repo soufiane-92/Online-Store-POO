@@ -7,7 +7,7 @@
   ?>
   <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mt-3">
     <div class="card" style="width: 22rem;max-height:35rem">
-      <img src="<?php echo $image ?>" class="card-img-top article__image" alt="...">
+      <img src="<?php echo Application::$root . $image ?>" class="card-img-top article__image" alt="...">
       <div class="card-body">
         <h5 class="card-title"><?php echo "Prix : ".$prix." Euros" ?></h5>
         <p class="card-text ellipsis"><?php echo $nom ?></p>

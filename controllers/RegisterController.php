@@ -1,11 +1,12 @@
 <?php
+use app\AuthModel;
 
 class RegisterController extends Controller
 {
   public function index()
   {
     $this->getView('authentication/register', array());
-    if (isset($_POST['Submit'])) {
+    if (isset($_POST['submit'])) {
       $this->check_client_if_exist();
     }
   }
@@ -23,8 +24,8 @@ class RegisterController extends Controller
 
     $erreurs = array();
 
-    $name      = secureData($_POST['name'],"text");
-    $firstName = secureData($_POST['firstName'],"text");
+    $name      = secureData($_POST['nom'],"text");
+    $firstName = secureData($_POST['prenom'],"text");
     $email     = secureData($_POST['email'],"text");
     $password  = secureData($_POST['password'], "password");
 
@@ -66,10 +67,15 @@ class RegisterController extends Controller
       // On instancie le model "Client"
       $this->getModel('Client');
       $client = $this->Client->getOne("email", $email);
-
       if($client){
-        echo 'Cette email existe déjà.';
-        header('location:register');
+        array_push($erreurs, "Cette email existe déjà.");
+        if (count($erreurs) > 0) {
+          Session::set("flash", $erreurs);
+          header('location:register');
+
+        } else {
+          header('location:register');
+        }
 
       }
       else{
@@ -77,13 +83,13 @@ class RegisterController extends Controller
           'nom' =>$name,
           'prenom' =>$firstName,
           'email' =>$email,
-          'password' =>password_hash($password, PASSWORD_BCRYPT),
+          'password' =>password_hash($password, PASSWORD_BCRYPT)
         );
         $this->Client->create($data);
-
-
-
-        // $this->Client->update('1', $data);
+        $auth = new Auth;
+        $auth = $auth->User($email);
+        Session::set("auth", $auth);
+        header('location:catalogue');
 
       }
       // header('location:home');

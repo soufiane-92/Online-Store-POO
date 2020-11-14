@@ -1,6 +1,7 @@
 :root {
     --main-text-color: #556052;
     --main-bg-color: #f2efea;
+    --secondary-bg-color: #fff;
     --bg-block: #af6b58;
     --bg-border-block: #aa624e;
 }
@@ -29,7 +30,7 @@ body {
 } */
 /* header block ------------- */
 header {
-    background-color: #fff;
+    background-color: var(--secondary-bg-color);
     color: inherit;
 }
 header a {
@@ -54,6 +55,12 @@ header a {
 }
 .class_active{
   background-color: #007bff;
+}
+.form__login {
+    background-color: var(--secondary-bg-color);
+    padding: 3.5rem;
+    border: solid 2px var(--main-bg-color);
+    border-radius: 10px;
 }
 /*
 header ul li {

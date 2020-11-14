@@ -33,11 +33,23 @@ class PanierController extends Controller
 // **************   recupere tout les produits du panier   ***************
         // var_dump(Panier::show());
 // **************   recupere liste idProduit et quantité du panier   ***************
-        var_dump(Panier::show());
+        // var_dump(Panier::show());
         var_dump(Session::get("auth"));
         // var_dump($_SESSION['panier']);
 // ************************************************************************************
-        $this->getView('shopping-cart');
+
+
+
+      if (isset($_POST["deleteProduit"]) && !empty($_POST["deleteProduit"])) {
+        Panier::remove($_POST["deleteProduit"]);
+      }
+
+      if (Panier::size() > 0) {
+        $this->getView('panier');
+      }
+      else {
+        header("Location:catalogue");
+      }
     }
 
 }

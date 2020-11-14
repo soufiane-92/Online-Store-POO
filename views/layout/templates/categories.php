@@ -5,12 +5,22 @@
     <?php
     $categories = new Categorie;
     $allCategories = $categories->getAll() ?? [];
-
+// var_dump($allCategories);
     ?>
-    <?php foreach($allCategories as $categorie): ?>
-
-      <!-- <li><a href="<?= Application::$root . 'catalogue/' ?>" ><?= $categorie['libelle'] ?></a></li> -->
-     <!-- <li><a href="<?= strtolower($categorie['libelle']) ?>" ><?= $categorie['libelle'] ?></a></li> -->
-    <?php  endforeach ?>
+    <ul>
+      <?php foreach($allCategories as $categorie): ?>
+        <li><a href="<?= Application::$root . 'catalogue/' . strtolower($categorie['libelle']) ?>" ><?= $categorie['libelle'] ?></a></li>
+      <?php  endforeach ?>
+    </ul>
   </div>
 </div>
+<?php
+if (Panier::size() > 0) {
+?>
+<form class=""  method="post">
+  <input type="hidden" name="deletePanier" value="ok">
+  <button type="submit" name="deletePanierBtn" class="btn btn-lg btn-danger">
+    Vider Panier
+  </button>
+</form>
+<?php } ?>

@@ -7,7 +7,7 @@ class LoginController extends Controller
 
     $this->getView('authentication/login', array());
 
-    if (isset($_POST['Submit'])) {
+    if (isset($_POST['submit'])) {
       $this->check_client_auth();
     }
   }
@@ -53,7 +53,7 @@ class LoginController extends Controller
     } else
     {
       $auth = new Auth;
-      print(" else Auth ? ==>");
+      // print(" else Auth ? ==>");
 
       if($auth->checkAuth($email, $pwd) == null)
       {
@@ -62,11 +62,11 @@ class LoginController extends Controller
       }
       else
       {
-        $auth = $auth->User($email, $pwd);
+        $auth = $auth->User($email);
         Session::set("auth", $auth);
-        $_SESSION['auth'] = 
+        // $_SESSION['auth'] = $auth;
         header('location:catalogue');
-        die();
+        return;
       }
     }
     header('location:login');

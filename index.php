@@ -4,9 +4,9 @@ require_once 'vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 setlocale(LC_MONETARY, 'fr_FR');
-// var_dump("http://localhost/greta2020/Online-Store-POO");
-$app = new Application(__DIR__);
-// $app = new Application("http://localhost/greta2020/Online-Store-POO");
+$url = new Url();
+
+$app = new Application($url->getUrlInfo()[0]);
 
 if(!isset($_SESSION))
     {

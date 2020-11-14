@@ -10,8 +10,8 @@ class Categorie extends Model
     $this->getConnection();
   }
   public function getAllProductsByCategorie($value){
-    $sql = "SELECT * FROM produit INNER JOIN ".$this->table." ON produit.idCategorie = ".$this->table.".id WHERE produit.idCategorie = '".$value."'";
-    print($sql);
+    $sql = "SELECT * FROM ".$this->table." INNER JOIN produit ON produit.idCategorie = ".$this->table.".id WHERE produit.idCategorie = '".$value."'";
+    // print($sql);
     $query = $this->_connection->prepare($sql);
     $query->execute([$value]);
     return $query->fetchAll(PDO::FETCH_ASSOC);
