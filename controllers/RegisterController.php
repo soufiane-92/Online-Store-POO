@@ -5,7 +5,7 @@ class RegisterController extends Controller
   public function index()
   {
     $this->getView('authentication/register', array());
-    if ($_POST['Submit']) {
+    if (isset($_POST['Submit'])) {
       $this->check_client_if_exist();
     }
   }
@@ -59,7 +59,7 @@ class RegisterController extends Controller
     }
 
     if (count($erreurs) > 0) {
-      Session::$currentSession->set("flash", $erreurs);
+      Session::set("flash", $erreurs);
       header('location:register');
 
     } else {
@@ -74,12 +74,10 @@ class RegisterController extends Controller
       }
       else{
         $data = array(
-          'name' =>$name,
-          'firstName' =>$firstName,
+          'nom' =>$name,
+          'prenom' =>$firstName,
           'email' =>$email,
           'password' =>password_hash($password, PASSWORD_BCRYPT),
-          'createdAt' => date("Y-m-d h:i:s")
-          // 'updatedAt' => date("Y-m-d h:i:s")
         );
         $this->Client->create($data);
 

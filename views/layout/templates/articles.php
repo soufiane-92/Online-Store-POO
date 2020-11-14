@@ -1,9 +1,9 @@
-  <?php foreach($allData as $produit) {
-
+ <?php foreach($allData as $produit) {
   $id = $produit['id'];
-  $description = $produit['description'];
+  $nom = $produit['nom'];
   $prix=$produit['prix'];
-  $image = $url->getUrlInfo()[0] . $produit['image'];
+  $image = $produit['imageUrl'];
+  
   ?>
     <form action=<?php echo $_SERVER['REQUEST_URI'] ?> method="post">
   <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mt-3">
@@ -11,7 +11,7 @@
       <img src="<?php echo $image ?>" class="card-img-top article__image" alt="...">
       <div class="card-body">
         <h5 class="card-title"><?php echo "Prix : ".$prix." Euros" ?></h5>
-        <p class="card-text ellipsis"><?php echo $description ?></p>
+        <p class="card-text ellipsis"><?php echo $nom ?></p>
         <div class="row">
           <div class="col-6">
             <button type="submit" name="submit_" class="btn btn-primary">Ajouter au panier</button>

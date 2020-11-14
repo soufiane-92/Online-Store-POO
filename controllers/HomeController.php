@@ -6,13 +6,6 @@ class HomeController extends Controller
       // print("je suis dans la méthode index de la class HomeContriller");
       // print_r($params);
 
-        // //On instancie une session et on lui attribut un nom
-        // $session = new Session(session_start());
-        // $session->set('name', 'Flash');
-        // Session::stop();
-        // print($session->get('name'));
-        // session_destroy();
-
         // On instancie le model "Produit"
         $this->getModel('Produit');
 
@@ -23,6 +16,9 @@ class HomeController extends Controller
 // **************   test Ajouter dans Panier   ***************
         // new Panier;
 // **************   test Ajouter dans Panier   ***************
+        // var_dump($_SESSION);
+        // print(Count(Panier::get()) === 0 ? "merde" : "fuck");
+        
         // Panier::add("c01", 1);
         // Panier::add("c02", 1);
         // Panier::add("c03", 2);
@@ -36,7 +32,7 @@ class HomeController extends Controller
 // **************   recupere tout les produits du panier   ***************
         // var_dump(Panier::show());
 // **************   recupere liste idProduit et quantité du panier   ***************
-        var_dump(Panier::get());
+        // var_dump(Panier::get());
 // ************************************************************************************
         $this->getView('home');
     }
