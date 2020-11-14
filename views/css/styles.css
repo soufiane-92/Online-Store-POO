@@ -36,6 +36,10 @@ header a {
 
     color: inherit;
 }
+header .block_green {
+    border: solid 2px var(--text-green);
+    margin-left: 1rem;
+}
 .header__title {
     font-size: 3rem;
 
