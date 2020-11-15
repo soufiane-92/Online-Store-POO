@@ -1,34 +1,15 @@
 
+    </div>
+    <footer>
+  <div class="container-fluid text-center text-md-left">
+      <div class="row">
+      <div class="col-md-6 mt-md-0 mt-3">
+          <h5 class="text-uppercase">LA FLEUR</h5>
+          <p>Nous espérons que l'étude de ce projet a pu vous aider à apprendre des choses en PHP</p>
+
       </div>
-    </div>
-    <!-- Footer -->
-<footer class="page-footer font-small blue pt-4">
+      <ul>
 
-<!-- Footer Links -->
-<div class="container-fluid text-center text-md-left">
-
-  <!-- Grid row -->
-  <div class="row">
-
-    <!-- Grid column -->
-    <div class="col-md-6 mt-md-0 mt-3">
-
-      <!-- Content -->
-      <h5 class="text-uppercase">LA FLEUR</h5>
-      <p>Nous espérons que l'étude de ce projet a pu vous aider à apprendre des choses en PHP</p>
-
-    </div>
-    <!-- Grid column -->
-
-    <hr class="clearfix w-100 d-md-none pb-3">
-
-    <!-- Grid column -->
-    <div class="col-md-3 mb-md-0 mb-3 ml-auto">
-
-      <!-- Links -->
-      
-
-      <ul class="list-unstyled">
         <li>
           <a href="<?php Application::$root ?>home">Home</a>
         </li>
@@ -40,23 +21,15 @@
         </li>
 
       </ul>
-
+    
+ </ul>
     </div>
-    <!-- Grid column -->
+      <div class="text-center py-3">© 2020 Copyright:
+        <a href="#">The Team</a>
+      </div>
 
-  </div>
-  <!-- Grid row -->
 
-</div>
-<!-- Footer Links -->
+    </footer>
 
-<!-- Copyright -->
-<div class="footer-copyright text-center py-3">© 2020 Copyright:
-  <a href="<?php Application::$root ?>home">The Team</a>
-</div>
-<!-- Copyright -->
-
-</footer>
-<!-- Footer -->
   </body>
 </html>

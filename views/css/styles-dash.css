@@ -1,0 +1,44 @@
+:root {
+    --main-text-color: #556052;
+    --main-bg-color: #f2efea;
+    --secondary-bg-color: #fff;
+    --bg-block: #af6b58;
+    --bg-border-block: #aa624e;
+    --text-green:#7ea04d;
+}
+
+*:before,
+*:after,
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+body {
+    background-color: var(--main-bg-color);
+    color:  var(--main-text-color);
+    font-size: 1.8rem;
+}
+a {
+    text-decoration: none;
+    color: inherit !important;
+}
+/* Button */
+.btn-green {
+    color: var(--secondary-bg-color);
+    background-color: var(--text-green);
+}
+.btn_add {
+    background-color: var(--main-text-color);
+    color: var(--secondary-bg-color) !important;
+}
+.block_green_title {
+    display: inline-block;
+    border: solid 2px var(--text-green);
+    padding: 1rem;
+}

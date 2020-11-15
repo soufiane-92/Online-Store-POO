@@ -18,8 +18,9 @@ if(!Session::get('panier')) {
 }
 
 $routes = array(
-  "/\/(catalogue)(\?categorie=)/" => array('CatalogueController', 'categorie'),
-  // "/\/(catalogue)\/(.+)/" => array('CatalogueController', 'categorie'),
+  "/\/(dashboard)\/(.+)/" => array('DashboardController', 'action'),
+    "/\/(dashboard)\/?/" => array('DashboardController', 'index'),
+     "/\/(catalogue)\/(.+)/" => array('CatalogueController', 'categorie'),
     "/\/(catalogue)\/?/" => array('CatalogueController', 'index'),
     "/\/(register)\/?(\d+)?/" => array('RegisterController', 'index'),
     "/\/(login)\/?(\d+)?/" => array('LoginController', 'index'),
@@ -40,7 +41,6 @@ foreach ($routes as $url => $action) {
           $params = 1;
         }
         $controller = new $action[0];
-
         $controller->{$action[1]}($params);
 
         // Exemple:
