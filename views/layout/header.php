@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -16,7 +16,7 @@
     <div class="container-fluid p-0">
         <header>
         <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand header__title" href="/"><img src="<?php Application::$root ?>images/lafleur.gif" alt="">
+            <a class="navbar-brand header__title" href="<?= Application::$root ?>home"><img src="<?php Application::$root ?>images/lafleur.gif" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

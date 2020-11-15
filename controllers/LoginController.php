@@ -1,30 +1,16 @@
 <?php
-
+include  './utils/functions.php';
 class LoginController extends Controller
 {
   public function index()
   {
-
-    $this->getView('authentication/login', array());
-
     if (isset($_POST['submit'])) {
       $this->check_client_auth();
     }
+    $this->getView('authentication/login', array());
   }
 
   public function check_client_auth(){
-
-
-    function secureData($data, $typeData = "") {
-      if($typeData != "password") $data = trim($data);
-      $data = stripslashes($data);
-      $data = htmlspecialchars($data);
-      return $data;
-    }
-    function valid_email($str) {
-      return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? FALSE : TRUE;
-    }
-
 
     $erreurs = array();
     $email = secureData($_POST['email'], "text");
@@ -42,7 +28,7 @@ class LoginController extends Controller
       array_push($erreurs, "Champ mot de passe obligatoire.");
     }
 
-    print_r(count($erreurs));
+    // print_r(count($erreurs));
 
     if (count($erreurs) > 0) {
 
@@ -59,19 +45,21 @@ class LoginController extends Controller
       {
         array_push($erreurs, "Authentification incorrecte.");
         Session::set("flash", $erreurs);
+        // print_r($_SESSION);
+        // die();
       }
       else
       {
         $auth = $auth->User($email);
         Session::set("auth", $auth);
         // $_SESSION['auth'] = $auth;
-        header('location:catalogue');
-        return;
+        exit(header('location:catalogue'));
+        // return;
       }
     }
-    header('location:login');
-
-
+    if(Session::get('flash') !== null)
+      return Session::get('flash');
+    // header('location:login');
   }
 
 }

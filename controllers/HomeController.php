@@ -7,11 +7,11 @@ class HomeController extends Controller
       // print_r($params);
 
         // On instancie le model "Produit"
-        $this->getModel('Produit');
+        // $this->getModel('Produit');
 
         // On creer le tableau de tous nos produits
-        $produits = $this->Produit->getAll();
-        $produit = $this->Produit->getOne("id","c03");
+        // $produits = $this->Produit->getAll();
+        // $produit = $this->Produit->getOne("id","c03");
 
 // **************   test Ajouter dans Panier   ***************
         // new Panier;
@@ -20,12 +20,12 @@ class HomeController extends Controller
         // var_dump($_SESSION);
         // print(Count(Panier::get()) === 0 ? "merde" : "fuck");
 
-        Panier::add("c01", 1);
-        Panier::add("c02", 1);
-        Panier::add("c03", 2);
-        Panier::add("c04", 1);
-        Panier::add("c05", 4);
-        Panier::add("c06", 1);
+        // Panier::add("c01", 1);
+        // Panier::add("c02", 1);
+        // Panier::add("c03", 2);
+        // Panier::add("c04", 1);
+        // Panier::add("c05", 4);
+        // Panier::add("c06", 1);
 // **************   test Supprimer element du Panier   ***************
       // Panier::remove("c0wvxcv6");
 // **************   test Supprimer tout le Panier   ***************

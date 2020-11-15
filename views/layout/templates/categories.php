@@ -1,15 +1,15 @@
 <div class="row">
 
   <h1 class="ml-5 my-4">Catégories</h1>
-  <div class="col-12">
+  <div class="col-12 p-5">
     <?php
     $categories = new Categorie;
     $allCategories = $categories->getAll() ?? [];
 // var_dump($allCategories);
     ?>
-    <ul>
+    <ul class="list-group list-categories">
       <?php foreach($allCategories as $categorie): ?>
-        <li><a href="<?= Application::$root . 'catalogue/' . strtolower($categorie['libelle']) ?>" ><?= $categorie['libelle'] ?></a></li>
+        <li class="list-group-item"><a href="<?= Application::$root . 'catalogue/' . strtolower($categorie['libelle']) ?>" ><?= $categorie['libelle'] ?></a></li>
       <?php  endforeach ?>
     </ul>
   </div>

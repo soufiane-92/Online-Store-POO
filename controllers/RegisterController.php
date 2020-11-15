@@ -1,27 +1,19 @@
 <?php
 use app\AuthModel;
+include  './utils/functions.php';
 
 class RegisterController extends Controller
 {
   public function index()
   {
-    $this->getView('authentication/register', array());
     if (isset($_POST['submit'])) {
       $this->check_client_if_exist();
     }
+    $this->getView('authentication/register', array());
+
   }
 
    public function check_client_if_exist(){
-     function secureData($data, $typeData = "") {
-       if($typeData != "password") $data = trim($data);
-       $data = stripslashes($data);
-       $data = htmlspecialchars($data);
-       return $data;
-     }
-     function valid_email($str) {
-       return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? FALSE : TRUE;
-     }
-
     $erreurs = array();
 
     $name      = secureData($_POST['nom'],"text");
@@ -61,7 +53,9 @@ class RegisterController extends Controller
 
     if (count($erreurs) > 0) {
       Session::set("flash", $erreurs);
-      header('location:register');
+      if(Session::get('flash') !== null)
+        return Session::get('flash');
+      // header('location:register');
 
     } else {
       // On instancie le model "Client"
@@ -71,10 +65,14 @@ class RegisterController extends Controller
         array_push($erreurs, "Cette email existe déjà.");
         if (count($erreurs) > 0) {
           Session::set("flash", $erreurs);
-          header('location:register');
+          if(Session::get('flash') !== null)
+            return Session::get('flash');
+          // header('location:register');
 
         } else {
-          header('location:register');
+          if(Session::get('flash') !== null)
+            return Session::get('flash');
+          // header('location:register');
         }
 
       }
@@ -92,8 +90,10 @@ class RegisterController extends Controller
         header('location:catalogue');
 
       }
-      // header('location:home');
+      header('location:home');
     }
+    if(Session::get('flash') !== null)
+      return Session::get('flash');
   }
 
 }

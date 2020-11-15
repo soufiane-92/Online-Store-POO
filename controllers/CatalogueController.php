@@ -1,14 +1,10 @@
 <?php
+include  './utils/functions.php';
 class CatalogueController extends Controller
 {
     public function index()
     {
-      function secureData($data, $typeData = "") {
-        if($typeData != "password") $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-      }
+
       if(isset($_POST["deletePanier"]) && !empty($_POST["deletePanier"])){
         if (Session::get('panier') != null){
           if ($_POST["deletePanier"] == "ok") {
@@ -33,19 +29,25 @@ class CatalogueController extends Controller
 
     public function categorie($value)
     {
-      function secureData($data, $typeData = "") {
-        if($typeData != "password") $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-      }
+      // $url = $_SERVER['REQUEST_URI'];
+      // $tokens = explode('/', $url);
+      // $value = $tokens[sizeof($tokens)-1];
+      // $getPositionEqual = strpos($value, '=');
+      // if($getPositionEqual === false) {
+      //   return redirectErrorPage();
+      // } else {
+      //   $value = substr_replace($value, '', 0, $getPositionEqual + 1);
+      // }
+      // if(!verifUrl($value, ['Composition', 'Fleurs', 'Plantes'])) {
+      //   return redirectErrorPage();
+      // }
 
       $this->getModel('Categorie');
       // $categorie = new Categorie;
       if($this->Categorie->getOne("libelle",secureData($value, "input"))['id']){
         $produits = $this->Categorie->getAllProductsByCategorie($this->Categorie->getOne("libelle",secureData($value, "input"))['id']);
       } else {
-        header('location:home');
+        return redirectErrorPage();
       }
 
       if(isset($_POST["deletePanier"]) && !empty($_POST["deletePanier"])){
@@ -55,6 +57,7 @@ class CatalogueController extends Controller
           }
         }
       }
+
       if(isset($_POST["addToPanier"]) || isset($_POST["idProduit"]) || isset($_POST["quantite"])){
         if(!empty($_POST["idProduit"]) || !empty($_POST["quantite"])){
           $id = secureData($_POST["idProduit"], "input");
