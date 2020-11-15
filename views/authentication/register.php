@@ -17,6 +17,11 @@
       <?php Session::remove('flash') ; }?>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-4 mx-auto my-5">
+      <div class="text-center">
+        <hr><br>
+        <h1>Page d'Inscription</h1>
+        <br><hr><br>
+      </div>
       <form class="form__login" method="post" action="<?= $_SERVER['REQUEST_URI'] ?>">
         <div class="form-group">
           <label for="nom">Nom</label>
@@ -34,7 +39,13 @@
           <label for="password">password</label>
           <input type="password" class="form-control form-control-lg" id="password" aria-describedby="passwordHelp" name="password">
         </div>
-        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" name="submit" class="btn btn-lg btn-primary btn-register">S'Inscrire</button>
+        <p>Déjà un compte LaFleur ?</p>
+        <a href="<?= Application::$root . 'login' ?>">
+          <span class="btn btn-lg btn-success btn-register">
+            Se Connecter
+          </span>
+        </a>
       </form>
     </div>
   </div>

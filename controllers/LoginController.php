@@ -53,7 +53,7 @@ class LoginController extends Controller
         $auth = $auth->User($email);
         Session::set("auth", $auth);
         // $_SESSION['auth'] = $auth;
-        exit(header('location:catalogue'));
+        exit(header('location:panier'));
         // return;
       }
     }

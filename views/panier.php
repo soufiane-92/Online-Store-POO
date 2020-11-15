@@ -1,13 +1,15 @@
-<section class="jumbotron text-center">
-  <div class="container">
-    <h1 class="jumbotron-heading">Mon Panier</h1>
-  </div>
-</section>
+
 
 <div class="container mb-4">
   <div class="row">
+
     <div class="col-12">
-      <div class="table-responsive">
+      <div class="text-center mt-30">
+        <hr><br>
+        <h1>Mon Panier</h1>
+        <br>
+      </div>
+      <div class="table-responsive mt-30">
         <table class="table table-striped">
           <thead>
             <tr>
@@ -47,62 +49,48 @@
               <?php
             }
             ?>
-            <tr>
+          </tbody>
+        </table>
+        <table class="table table-striped">
+          <tbody>
+            <tr class="total_box">
               <td></td>
               <td></td>
               <td></td>
               <td></td>
-              <td></td>
-              <td></td>
-              <!-- <td>Sous-Total</td>
-              <td class="text-right"><?= money_format('%i',$total) ?></td> -->
+              <td><strong>Total</strong></td>
+              <td class="text-right"><strong><?= money_format('%i',$total) ?></strong></td>
             </tr>
-            <!-- <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>TVA</td>
-            <td class="text-right">6,90 €</td>
-          </tr> -->
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><strong>Total</strong></td>
-            <td class="text-right"><strong><?= money_format('%i',$total) ?></strong></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="col mb-2">
-    <div class="row">
-      <div class="col-sm-12  col-md-6">
-        <a href="<?= Application::$root . 'catalogue' ?>">
-          <button class="btn btn-lg btn-block btn-light">Retourner au catalogue</button>
-        </a>
+          </tbody>
+        </table>
       </div>
-      <div class="col-sm-12 col-md-6 text-right">
-        <?php
-        if (Session::get("auth") !== null) {
-          ?>
-          <a href="<?= Application::$root . 'commande' ?>">
-            <button class="btn btn-lg btn-block btn-success text-uppercase">Commander</button>
+    </div>
+    <div class="col mb-2 mt-30">
+      <div class="row">
+        <div class="col-sm-12  col-md-6">
+          <a href="<?= Application::$root . 'catalogue' ?>">
+            <button class="btn btn-lg btn-block btn-light btn-panier">Retourner au catalogue</button>
           </a>
+        </div>
+        <div class="col-sm-12 col-md-6 text-right">
           <?php
-        } else {
+          if (Session::get("auth") !== null) {
+            ?>
+            <a href="<?= Application::$root . 'commande' ?>">
+              <button class="btn btn-lg btn-block btn-success btn-panier">Commander</button>
+            </a>
+            <?php
+          } else {
 
+            ?>
+            <a href="<?= Application::$root . 'login' ?>">
+              <button class="btn btn-lg btn-block btn-warning btn-panier">Se connecter pour commander</button>
+            </a>
+            <?php
+          }
           ?>
-          <a href="<?= Application::$root . 'register' ?>">
-            <button class="btn btn-lg btn-block btn-warning text-uppercase">S'inscrire pour commander</button>
-          </a>
-          <?php
-        }
-        ?>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>

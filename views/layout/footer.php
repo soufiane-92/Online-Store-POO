@@ -1,6 +1,6 @@
 </div>
 <footer class="page-footer font-small blue pt-4">
-  <div class="container-fluid text-center text-md-left">
+  <div class="container-fluid text-center text-md-left mt-50">
     <div class="row">
       <div class="col-md-6 mt-md-0 mt-3">
         <h5 class="text-uppercase">LA FLEUR</h5>

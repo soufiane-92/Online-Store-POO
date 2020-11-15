@@ -87,7 +87,7 @@ class RegisterController extends Controller
         $auth = new Auth;
         $auth = $auth->User($email);
         Session::set("auth", $auth);
-        header('location:catalogue');
+        header('location:panier');
 
       }
       header('location:home');
