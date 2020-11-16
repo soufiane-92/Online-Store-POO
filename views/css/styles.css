@@ -64,7 +64,7 @@ header .block_green {
     color: var(--secondary-bg-color);
     background-color: var(--text-green);
 }
-/* block deco */ 
+/* block deco */
 .block_green {
     border: solid 2px var(--text-green);
     padding: 1rem;
@@ -114,8 +114,8 @@ header .block_green {
     margin-top:1.5rem;
     margin-bottom:1.5rem;
 }
-.error-actions .btnError { 
-    margin-right:10px; 
+.error-actions .btnError {
+    margin-right:10px;
 }
 /* Footer ------------------ */
 footer {
@@ -123,6 +123,7 @@ footer {
     color: var(--secondary-bg-color);
     padding: 4rem;
     margin-top: 4rem;
+
 }
 footer h5 {
    font-size: 3rem;
@@ -152,4 +153,29 @@ footer a:hover {
 }
 .credit_image a{
     color: inherit;
+}
+.btn-register{
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+.btn-panier{
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+.total_box td, tr{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 20px;
+}
+.mt-30{
+  margin-top: 30px;
+}
+.mt-50{
+  margin-top: 50px;
 }

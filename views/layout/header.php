@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <!-- Required meta tags -->
@@ -19,8 +19,8 @@
     <div class="container-fluid p-0">
         <header>
             <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand header__title" href="<?=Application::$root?>home">
-                    <img src="<?=Application::$root . "images/lafleur.gif"?>" alt="">
+                <a class="navbar-brand header__title" href="<?=Application::$root?>home"><img
+                        src="<?=Application::$root . 'images/lafleur.gif'?>" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,8 +40,8 @@
                     </ul>
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="<?=Application::$root?>panier">Panier:
-                                <?=Panier::get() !== 0 ? count(Panier::get()) : "0"?> Produit(s)</a>
+                            <a class="nav-link" href="<?=Application::$root?>panier">Panier: <?=Panier::size();?>
+                                Produit(s)</a>
                         </li>
                     </ul>
                     <?php include 'views/layout/registerMenu.php'?>

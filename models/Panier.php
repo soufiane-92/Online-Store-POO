@@ -3,7 +3,7 @@
 class Panier extends Model
 {
   public $panier = [];
-  
+
     // var_dump($this->panier);
     // $secure = false; // recevoir les cookies uniquement en HTTPS
     // $httponly = false; // évite accès de la session par scripte JavaScript
@@ -45,6 +45,7 @@ class Panier extends Model
       foreach(Session::get("panier") as $key => $value){
         if ($produit->getOne('id', $key)) {
           $toutLesProduits[$i] = $produit->getOne('id', $key);
+          $toutLesProduits[$i]['quantite'] = $value;
           $i++;
         }
       }
@@ -52,12 +53,29 @@ class Panier extends Model
     }
   }
 
+  static public function size()
+  {
+    if (Session::get("panier") != null){
+      $nombreDeProduit = 0;
+      foreach(Session::get("panier") as $key => $value){
+          $nombreDeProduit += intval($value);
+      }
+    }else {
+      $nombreDeProduit = 0;
+    }
+    return $nombreDeProduit;
+  }
+
   static public function add(string $idProduit,int $quantite)
   {
-    if (isset($_SESSION['panier'])){
+    if (Session::get('panier') !== null){
       $produit = new Produit;
-      if ($produit->getOne('id', $idProduit)) {
-        $_SESSION['panier'][$idProduit] = $quantite;
+      if ($produit->getOne('id', $idProduit) != null) {
+        if (isset($_SESSION['panier'][$idProduit])) {
+          $_SESSION['panier'][$idProduit] += intval($quantite);
+        } else {
+          $_SESSION['panier'][$idProduit] = intval($quantite);
+        }
       }
     }
   }
@@ -66,12 +84,20 @@ class Panier extends Model
   {
     // parcourt le tableau panier est suprime le produit ayant la $key = $idProduit
 
-    if (isset($_SESSION['panier'])){
-      foreach($_SESSION['panier'] as $key => $value){
-        if ($key == $idProduit) {
-          unset($_SESSION['panier'][$key]);
+    // if (isset($_SESSION['panier'])){
+    //   foreach($_SESSION['panier'] as $key => $value){
+    //     if ($key == $idProduit) {
+    //       unset($_SESSION['panier'][$key]);
+    //     }
+    //   }
+    // }
+    if (Session::get('panier') !== null){
+        if (isset($_SESSION['panier'][$idProduit]) && ($_SESSION['panier'][$idProduit] > 1)) {
+          $_SESSION['panier'][$idProduit] -= 1;
+        } else {
+          unset($_SESSION['panier'][$idProduit]);
         }
-      }
+
     }
   }
 

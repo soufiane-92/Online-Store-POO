@@ -8,7 +8,7 @@ class Url
       $currentPageUrl = $_SERVER['REQUEST_URI'];
 
       // recupere: [dirname] => /mondossier dans un tableau grace à la fonction pathinfo
-     
+
       $pathInfo = explode('/', pathinfo($currentUrl)['dirname']);
       $path = '';
       for ($i=0; $i < count($pathInfo); $i++) {

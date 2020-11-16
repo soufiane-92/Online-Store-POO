@@ -4,37 +4,57 @@ class CatalogueController extends Controller
 {
     public function index()
     {
+
+      if(isset($_POST["deletePanier"]) && !empty($_POST["deletePanier"])){
+        if (Session::get('panier') != null){
+          if ($_POST["deletePanier"] == "ok") {
+            Panier::delete();
+          }
+        }
+      }
+      if(isset($_POST["addToPanier"]) || isset($_POST["idProduit"]) || isset($_POST["quantite"])){
+        if(!empty($_POST["idProduit"]) || !empty($_POST["quantite"])){
+          $id = secureData($_POST["idProduit"], "input");
+          $quantite = secureData($_POST["quantite"], "input");
+          // new Panier;
+          Panier::add($id, $quantite);
+
+        }
+      }
+
       $this->getModel('Produit');
       $produits = $this->Produit->getAll();
-      
       $this->getView('catalogue', $produits);
     }
 
-    public function categorie()
+    public function categorie($value)
     {
-      $url = $_SERVER['REQUEST_URI'];
-      $tokens = explode('/', $url);
-      $value = $tokens[sizeof($tokens)-1];
-      $getPositionEqual = strpos($value, '=');
-      if($getPositionEqual === false) {
-        return redirectErrorPage();
-      } else {
-        $value = substr_replace($value, '', 0, $getPositionEqual + 1);
-      }
-      if(!verifUrl($value, ['Composition', 'Fleurs', 'Plantes'])) {
-        return redirectErrorPage();
-      }
-      
-      
       $this->getModel('Categorie');
-      $categorie = new Categorie;
-      if($this->Categorie->getOne("libelle",secureData($value))['id']){
-        
-        $produits = $this->Categorie->getAllProductsByCategorie($this->Categorie->getOne("libelle",secureData($value))['id']);
+      // $categorie = new Categorie;
+      if($this->Categorie->getOne("libelle",secureData($value, "input"))['id']){
+        $produits = $this->Categorie->getAllProductsByCategorie($this->Categorie->getOne("libelle",secureData($value, "input"))['id']);
       } else {
         return redirectErrorPage();
       }
-      
+
+      if(isset($_POST["deletePanier"]) && !empty($_POST["deletePanier"])){
+        if (Session::get('panier') != null){
+          if ($_POST["deletePanier"] == "ok") {
+            Panier::delete();
+          }
+        }
+      }
+
+      if(isset($_POST["addToPanier"]) || isset($_POST["idProduit"]) || isset($_POST["quantite"])){
+        if(!empty($_POST["idProduit"]) || !empty($_POST["quantite"])){
+          $id = secureData($_POST["idProduit"], "input");
+          $quantite = secureData($_POST["quantite"], "input");
+          Panier::add($id, $quantite);
+        }
+      }
       $this->getView('catalogue', $produits);
     }
+
+
+
 }

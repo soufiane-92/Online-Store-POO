@@ -5,7 +5,7 @@
         <a href="#descriptions" class="btn btn-green">Lire la suite</a>
     </div>
     <div class="col-md-6">
-        <img src="images\lala-azizli-tfNyTfJpKvc-unsplash.jpg" class="img-fluid rounded" alt="image who shows developers in work">
+        <img src="<?= Application::$root ?>images\lala-azizli-tfNyTfJpKvc-unsplash.jpg" class="img-fluid rounded" alt="image who shows developers in work">
         <span class="credit_image">Photo by <a href="https://unsplash.com/@lazizli?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Lala Azizli</a> on <a href="https://unsplash.com/s/photos/developers?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
     </div>
     <div class="col-md-6 mx-auto" id="descriptions">

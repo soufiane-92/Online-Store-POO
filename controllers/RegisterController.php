@@ -1,14 +1,16 @@
 <?php
+use app\AuthModel;
 include  './utils/functions.php';
 
 class RegisterController extends Controller
 {
   public function index()
   {
-    $this->getView('authentication/register', array());
     if (isset($_POST['submit'])) {
       $this->check_client_if_exist();
     }
+    $this->getView('authentication/register', array());
+
   }
 
    public function check_client_if_exist(){
@@ -51,7 +53,9 @@ class RegisterController extends Controller
 
     if (count($erreurs) > 0) {
       Session::set("flash", $erreurs);
-      header('location:register');
+      if(Session::get('flash') !== null)
+        return Session::get('flash');
+      // header('location:register');
 
     } else {
       // On instancie le model "Client"
@@ -61,10 +65,14 @@ class RegisterController extends Controller
         array_push($erreurs, "Cette email existe déjà.");
         if (count($erreurs) > 0) {
           Session::set("flash", $erreurs);
-          header('location:register');
-    
+          if(Session::get('flash') !== null)
+            return Session::get('flash');
+          // header('location:register');
+
         } else {
-          header('location:register');
+          if(Session::get('flash') !== null)
+            return Session::get('flash');
+          // header('location:register');
         }
 
       }
@@ -73,18 +81,19 @@ class RegisterController extends Controller
           'nom' =>$name,
           'prenom' =>$firstName,
           'email' =>$email,
-          'password' =>password_hash($password, PASSWORD_BCRYPT),
+          'password' =>password_hash($password, PASSWORD_BCRYPT)
         );
-       
         $this->Client->create($data);
-
-
-
-        // $this->Client->update('1', $data);
+        $auth = new Auth;
+        $auth = $auth->User($email);
+        Session::set("auth", $auth);
+        header('location:panier');
 
       }
       header('location:home');
     }
+    if(Session::get('flash') !== null)
+      return Session::get('flash');
   }
 
 }
