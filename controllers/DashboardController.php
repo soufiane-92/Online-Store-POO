@@ -41,7 +41,8 @@ class DashboardController extends Controller
     }
     public function action($value)
     {
-
+        var_dump($_SESSION);
+        die();
         $this->getViewDash('dashboard', $arrayOfData = []);
     }
     public function clientModifier()
