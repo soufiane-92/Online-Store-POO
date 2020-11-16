@@ -15,24 +15,25 @@ if(!isset($_SESSION))
 if(!Session::get('panier')) {
   new Panier();
 }
-
 $routes = array(
-  "/\/(panier)\/?/" => array('PanierController', 'index'),
-  "/\/(catalogue)\/(.+)/" => array('CatalogueController', 'categorie'),
-  "/\/(catalogue)\/?/" => array('CatalogueController', 'index'),
+  "/\/(panier)\/?/"         => array('PanierController', 'index'),
+  "/\/(catalogue)\/(.+)/"   => array('CatalogueController', 'categorie'),
+  "/\/(catalogue)\/?/"      => array('CatalogueController', 'index'),
   "/\/(register)\/?(\d+)?/" => array('RegisterController', 'index'),
-  "/\/(login)\/?(\d+)?/" => array('LoginController', 'index'),
-  "/\/(logout)\/?(\d+)?/" => array('LogoutController', 'index'),
-  "/\/(404)\/?(\d+)?/" => array('ErrorController', 'index'),
-  '//' => array('HomeController', 'index')
+  "/\/(login)\/?(\d+)?/"    => array('LoginController', 'index'),
+  "/\/(logout)\/?(\d+)?/"   => array('LogoutController', 'index'),
+  "/\/(404)\/?(\d+)?/"      => array('ErrorController', 'index'),
+  "/\/(home)\/?/"           => array('HomeController', 'index'),
+  "/\/?/"                   => array('HomeController', 'index')
 );
 
 foreach ($routes as $url => $action) {
-  $params = null;
+  $params  = null;
   $matches = preg_match($url, $_SERVER['REQUEST_URI'], $params);
 
 
   if ($matches > 0) {
+    var_dump($url);
     if (isset($params[2])) {
       $params = $params[2];
     } else {
@@ -47,5 +48,6 @@ foreach ($routes as $url => $action) {
     // $controller->index($params);
 
     break;
+
   }
 }

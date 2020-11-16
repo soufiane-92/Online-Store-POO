@@ -29,7 +29,7 @@
               <tr>
                 <td>
                   <div style="max-width:100px; background: white; text-align:center;">
-                    <img style="max-height:80px;" src="<?= $produit['imageUrl'] ?>" />
+                    <img style="max-height:80px;" src="<?= Application::$root . $produit['imageUrl'] ?>" />
                   </div>
                 </td>
                 <td><?= ucfirst($produit['nom']) . " : " . ucfirst($produit['description']) ?>
