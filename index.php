@@ -15,8 +15,7 @@ if (!Session::get('panier')) {
     new Panier();
 }
 $routes = array(
-    "/\/(dashboard)\/(ajouter)\/?/" => array('DashboardController', 'action'),
-    "/\/(dashboard)\/(ajouter)\/(.+)/" => array('DashboardController', 'action'),
+    "/\/(dashboard)\/?/" => array('DashboardController', 'index'),
     "/\/(panier)\/?/" => array('PanierController', 'index'),
     "/\/(catalogue)\/(.+)/" => array('CatalogueController', 'categorie'),
     "/\/(catalogue)\/?/" => array('CatalogueController', 'index'),
@@ -33,7 +32,6 @@ foreach ($routes as $url => $action) {
     $matches = preg_match($url, $_SERVER['REQUEST_URI'], $params);
 
     if ($matches > 0) {
-        var_dump($url);
         if (isset($params[2])) {
             $params = $params[2];
         } else {

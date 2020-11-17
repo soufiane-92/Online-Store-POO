@@ -4,26 +4,15 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        if (isset($_POST['validateModifClient'])) {
-            return $this->check_client_and_modify();
-        }
-        if (isset($_POST['modifierClient'])) {
-            return $this->clientModifier();
-        }
-        if (isset($_POST['deleteClient'])) {
-            return $this->clientDelete();
-        }
-        if (isset($_POST['modifierCategorie'])) {
-            return $this->modifierCategorie();
-        }
-        if (isset($_POST['validateModifCategorie'])) {
-            return $this->check_categorie_and_modify();
-        }
-        if (isset($_POST['modifierProduit'])) {
-            return $this->modifierProduit();
-        }
-        if (isset($_POST['validateModifProduit'])) {
-            return $this->check_produit_and_modify();
+
+        if (isset($_POST) && !empty($_POST)) {
+
+            foreach ($_POST as $key => $action) {
+                if (isset($_POST[$key])) {
+                    return $this->$key();
+                }
+            }
+
         }
         $this->getModel('Client');
         $this->getModel('Categorie');
@@ -39,13 +28,7 @@ class DashboardController extends Controller
 
         $this->getViewDash('dashboard', $arrayOfData);
     }
-    public function action($value)
-    {
-        var_dump($_SESSION);
-        die();
-        $this->getViewDash('dashboard', $arrayOfData = []);
-    }
-    public function clientModifier()
+    public function modifierClient()
     {
 
         $idCLient = $_POST['modifierClient'];
@@ -54,7 +37,7 @@ class DashboardController extends Controller
 
         $this->getViewDash('dashModifieClient', $client);
     }
-    public function check_client_and_modify()
+    public function validateModifClient()
     {
         // get the client first
         // On instancie le model "Client"
@@ -156,7 +139,7 @@ class DashboardController extends Controller
             header('location:dashboard');
         }
     }
-    public function clientDelete()
+    public function deleteClient()
     {
         $idCLient = $_POST['deleteClient'];
         $this->getModel('Client');
@@ -176,7 +159,7 @@ class DashboardController extends Controller
 
         $this->getViewDash('dashModifieCat', $cat);
     }
-    public function check_categorie_and_modify()
+    public function validateModifCategorie()
     {
         $idCat = $_POST['validateModifCategorie'];
         $this->getModel('Categorie');
@@ -215,7 +198,7 @@ class DashboardController extends Controller
 
         $this->getViewDash('dashModifieProduit', $produit);
     }
-    public function check_produit_and_modify()
+    public function validateModifProduit()
     {
         $idProduit = $_POST['validateModifProduit'];
         $this->getModel('Produit');

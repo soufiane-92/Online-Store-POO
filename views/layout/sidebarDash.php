@@ -2,22 +2,22 @@
     <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="dashboard">
+                <a class="nav-link" href="<?=Application::$root . 'dashboard'?>">
                     Dashboard
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#clientDash">
+                <a class="nav-link" href="<?=Application::$root . 'dashboard#clientDash'?>">
                     Clients
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#categoriesDash">
+                <a class="nav-link" href="<?=Application::$root . 'dashboard#categoriesDash'?>">
                     Categories
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#produitsDash">
+                <a class="nav-link" href="<?=Application::$root . 'dashboard#produitsDash'?>">
                     Produits
                 </a>
             </li>

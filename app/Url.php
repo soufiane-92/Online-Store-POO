@@ -1,32 +1,38 @@
 <?php
 class Url
 {
-    public function getUrlInfo(){
-      // recupere le lien d'entrée (vers index.php) : /mondossier/index.php
-      $currentUrl = $_SERVER['PHP_SELF'];
-      // recupere le lien en cours (dynamique)
-      $currentPageUrl = $_SERVER['REQUEST_URI'];
+    public function getUrlInfo()
+    {
+        // recupere le lien d'entrée (vers index.php) : /mondossier/index.php
+        $currentUrl = $_SERVER['PHP_SELF'];
+        // recupere le lien en cours (dynamique)
+        $currentPageUrl = $_SERVER['REQUEST_URI'];
 
-      // recupere: [dirname] => /mondossier dans un tableau grace à la fonction pathinfo
+        // recupere: [dirname] => /mondossier dans un tableau grace à la fonction pathinfo
 
-      $pathInfo = explode('/', pathinfo($currentUrl)['dirname']);
-      $path = '';
-      for ($i=0; $i < count($pathInfo); $i++) {
-        $pathInfo[$i] .= "/";
-        $path .=  $pathInfo[$i];
+        $pathInfo = explode('/', pathinfo($currentUrl)['dirname']);
+        $path = '/';
 
-      }
-      // print($path);
+        for ($i = 0; $i < 2; $i++) {
+            if (!empty($pathInfo[$i])) {
+                $pathInfo[$i] .= "/";
+                $path .= $pathInfo[$i];
+            }
 
-      // recupere le : localhost ou www.monsite.fr
-      $nomDuHost = $_SERVER['HTTP_HOST'];
+        }
+        // var_dump($path);
+        // die();
+        // print($path);
 
-      // recupere le http:// ou https://
-      $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https'?'https':'http';
+        // recupere le : localhost ou www.monsite.fr
+        $nomDuHost = $_SERVER['HTTP_HOST'];
 
-      $uri[0] = $protocol.'://'.$nomDuHost.$path;
-      $uri[1] = $protocol.'://'.$nomDuHost.$currentPageUrl;
-      // retourne : http://localhost/mondossier/
-      return $uri;
+        // recupere le http:// ou https://
+        $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"], 0, 5)) == 'https' ? 'https' : 'http';
+
+        $uri[0] = $protocol . '://' . $nomDuHost . $path;
+        $uri[1] = $protocol . '://' . $nomDuHost . $currentPageUrl;
+        // retourne : http://localhost/mondossier/
+        return $uri;
     }
 }
