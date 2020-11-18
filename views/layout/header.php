@@ -34,9 +34,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="<?=Application::$root?>catalogue">Catalogue</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?=Application::$root?>contact">Contact</a>
-                        </li>
+                        <?php if (Session::get('auth')) {?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?=Application::$root?>dashboard">Administration</a>
+                            </li>
+                        <?php }?>
+
                     </ul>
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item active">

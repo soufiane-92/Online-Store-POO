@@ -4,8 +4,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $isIdentified = $_SESSION['auth'] ?? false;
-        if (!$isIdentified) {
+        $client = $_SESSION['auth'] ?? false;
+        if (!$client || $client['status'] != 2) {
             return header('location:home');
         }
         if (isset($_POST) && !empty($_POST)) {

@@ -3,7 +3,7 @@
 require_once 'vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
-setlocale(LC_MONETARY, 'fr_FR');
+
 $url = new Url();
 
 $app = new Application($url->getUrlInfo()[0]);
