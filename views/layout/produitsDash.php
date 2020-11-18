@@ -3,9 +3,11 @@
         <h2 class="block_green_title" id="produitsDash">Produits</h2>
     </div>
     <div class="col-sm-5 d-flex justify-content-end align-items-center">
-        <a href="<?=Application::$root?>dashboard/ajouter" class="btn btn-lg ml-5 btn_add">
+    <form method="POST">
+        <button type="submit" name="ajouter" class="btn btn-lg ml-5 btn_add">
             Ajouter
-        </a>
+        </button>
+        </form>
     </div>
 </div>
 <div class="table-responsive bg-light">

@@ -1,9 +1,6 @@
-CREATE TABLE IF NOT EXISTS ADMIN (
+CREATE TABLE IF NOT EXISTS client_status (
    id int NOT NULL AUTO_INCREMENT,
    nom VARCHAR(25) NOT NULL,
-   password VARCHAR(15) NOT NULL,
-   created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP(),
-   updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP(),
    PRIMARY KEY(id)
 );
 
@@ -22,9 +19,11 @@ CREATE TABLE IF NOT EXISTS CLIENT(
    codePostal VARCHAR(10) NULL,
    adresse VARCHAR(200) NULL,
    ville VARCHAR(200) NULL,
+   status INT DEFAULT 1 NOT NULL, 
    created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP(),
    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP(),
-   PRIMARY KEY(id)
+   PRIMARY KEY(id),
+   FOREIGN KEY(status) REFERENCES client_status(id)
 );
 
 CREATE TABLE IF NOT EXISTS PRODUIT(
@@ -86,6 +85,9 @@ INSERT INTO produit VALUES ('p05','Pot de mitonia mauve','papouasi',83,'images/p
 INSERT INTO produit VALUES ('p06','Pot de phalaonopsis blanc','pionosa',58,'images/plantes/pionosa.gif','pla');
 INSERT INTO produit VALUES ('p07','Pot de phalaonopsis rose mauve','sabana',58,'images/plantes/sabana.gif','pla');
 
+INSERT INTO `client_status`(`nom`) VALUES ('client');
+INSERT INTO `client_status`(`nom`) VALUES ('admin');
+
 INSERT INTO `client` (`nom`, `prenom`, `email`, `password`, `codePostal`, `adresse`, `ville`) VALUES ('Marjory', 'Burberow', 'mburberow0@creativecommons.org', '9JnJeZ7z', '75005', '70211 Barby Lane', 'Wedoro');
 INSERT INTO `client` (`nom`, `prenom`, `email`, `password`, `codePostal`, `adresse`, `ville`) VALUES ('Jarrid', 'Wight', 'jwight1@zdnet.com', 'xVCk9GXZ1uj', '75005', '38 Maple Wood Pass', 'Varadero');
 INSERT INTO `client` (`nom`, `prenom`, `email`, `password`, `codePostal`, `adresse`, `ville`) VALUES ('Daphna', 'Freund', 'dfreund2@fda.gov', '8qPtstNL5HU5', '216282', '2096 Graedel Way', 'Ovsyanka');
@@ -105,6 +107,3 @@ INSERT INTO `panier`(`idProduit`, `idCommande`, `quantite`) VALUES ('p01', '1', 
 INSERT INTO `panier`(`idProduit`, `idCommande`, `quantite`) VALUES ('f03', '2', '14');
 INSERT INTO `panier`(`idProduit`, `idCommande`, `quantite`) VALUES ('p06', '1', '1');
 INSERT INTO `panier`(`idProduit`, `idCommande`, `quantite`) VALUES ('f05', '2', '3');
-
-INSERT INTO `admin`(`nom`, `password`) VALUES ('toto','toto');
-INSERT INTO `admin`(`nom`, `password`) VALUES ('titi','titi');

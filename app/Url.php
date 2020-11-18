@@ -13,7 +13,7 @@ class Url
         $pathInfo = explode('/', pathinfo($currentUrl)['dirname']);
         $path = '/';
 
-        for ($i = 0; $i < 2; $i++) {
+        for ($i = 0; $i < $_ENV['PATH_INFO']; $i++) {
             if (!empty($pathInfo[$i])) {
                 $pathInfo[$i] .= "/";
                 $path .= $pathInfo[$i];

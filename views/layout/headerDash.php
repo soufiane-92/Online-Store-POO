@@ -1,3 +1,9 @@
+<?php
+$isIdentified = $_SESSION['auth'] ?? false;
+if (!$isIdentified) {
+    header('location:home');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +38,7 @@
             </button>
             <ul class="navbar-nav px-3">
                 <li class="nav-item text-nowrap">
-                    <a class="nav-link bg-light p-2" href="#">Sign out</a>
+                    <a class="nav-link bg-light p-2" href="logout">Sign out</a>
                 </li>
             </ul>
         </nav>
