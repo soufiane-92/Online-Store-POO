@@ -20,8 +20,8 @@ CREATE TABLE IF NOT EXISTS CLIENT(
    adresse VARCHAR(200) NULL,
    ville VARCHAR(200) NULL,
    status INT DEFAULT 1 NOT NULL, 
-   created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP(),
-   updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+   updated_at TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE now(),
    PRIMARY KEY(id),
    FOREIGN KEY(status) REFERENCES client_status(id)
 );

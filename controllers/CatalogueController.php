@@ -54,5 +54,4 @@ class CatalogueController extends Controller
         }
         $this->getView('catalogue', $produits);
     }
-
 }
