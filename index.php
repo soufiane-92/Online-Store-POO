@@ -33,7 +33,7 @@ foreach ($routes as $url => $action) {
 
 
   if ($matches > 0) {
-    var_dump($url);
+    // var_dump($url);
     if (isset($params[2])) {
       $params = $params[2];
     } else {
