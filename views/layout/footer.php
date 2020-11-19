@@ -20,6 +20,7 @@
         <a href="<?=Application::$root?>home">The Team</a>
     </div>
 </footer>
+
 </body>
 
 </html>

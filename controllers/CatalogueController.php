@@ -29,7 +29,7 @@ class CatalogueController extends Controller
 
     public function categorie($value)
     {
-        $this->getModel('Categorie');
+        $this->getModel('e');
         // $categorie = new Categorie;
         if ($this->Categorie->getOne("libelle", secureData($value, "input"))['id']) {
             $produits = $this->Categorie->getAllProductsByCategorie($this->Categorie->getOne("libelle", secureData($value, "input"))['id']);
