@@ -37,8 +37,8 @@ foreach (Panier::show() as $produit) {
                 </td>
                 <td><?=$produit['quantite']?></td>
                 <!-- <td><input class="form-control" type="text" value="1" /></td> -->
-                <td class="text-right"><?=round($produit['prix'], 2) . ' EUR'?></td>
-                <td class="text-right"><?=round($produit['prix'] * $produit['quantite'], 2) . ' EUR'?></td>
+                <td class="text-right"><?= number_format(round($produit['prix'], 2),2, '.', '') . ' EUR'?></td>
+                <td class="text-right"><?= number_format(round($produit['prix'] * $produit['quantite'], 2),2,  '.', '') . ' EUR'?></td>
                 <td class="text-right">
                   <form   method="post">
                     <button type="submit" name="deleteProduit" value="<?=$produit['id']?>" class="btn btn-lg btn-danger">
@@ -60,7 +60,7 @@ foreach (Panier::show() as $produit) {
               <td></td>
               <td></td>
               <td><strong>Total</strong></td>
-              <td class="text-right"><strong><?=round($total, 2) . ' EUR'?></strong></td>
+              <td class="text-right"><strong><?= number_format(round($total, 2),2, '.', '') . ' EUR'?></strong></td>
             </tr>
           </tbody>
         </table>
