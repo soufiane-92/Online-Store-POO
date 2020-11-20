@@ -34,7 +34,7 @@ class Commande extends Model
             $query = $this->_connection->prepare($sql);
             $query->execute([$produit, $idCommande, $quantite]);
         }
-        Panier::delete();
+        unset($_SESSION['panier']);
     }
 
     public function getAllCommande($idClient)
@@ -42,6 +42,18 @@ class Commande extends Model
         $sql = "SELECT * FROM `commande` WHERE commande.idClient =? ";
         $query = $this->_connection->prepare($sql);
         $query->execute([$idClient]);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getAllProductsFromCommand($value)
+    {
+        $sql = "SELECT * FROM commande 
+        INNER JOIN panier ON commande.id = panier.idCommande 
+        INNER JOIN produit ON panier.idProduit = produit.id 
+        WHERE commande.id = ?";
+        // print($sql);
+        $query = $this->_connection->prepare($sql);
+        $query->execute([$value]);
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 }

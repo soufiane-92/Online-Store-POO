@@ -75,11 +75,9 @@
           <?php
           if (Session::get("auth") !== null) {
           ?>
-            <a href="">
-              <form action="<?= Application::$root . 'commande' ?>" method="post">
-                <button type="submit" name="commander" class="btn btn-lg btn-block btn-success btn-panier">Commander</button>
-              </form>
-            </a>
+            <form action="<?= Application::$root . 'commande' ?>" method="post">
+              <button type="submit" name="commander" class="btn btn-lg btn-block btn-success btn-panier">Commander</button>
+            </form>
           <?php
           } else {
 

@@ -81,6 +81,9 @@ header .block_green {
 .home_presentation {
     margin-top: 5rem;
 }
+.home__infos {
+   margin-top: 8rem; 
+}
 .home .btn-green {
     color: var(--secondary-bg-color);
     background-color: var(--text-green);

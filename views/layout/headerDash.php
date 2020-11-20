@@ -1,9 +1,3 @@
-<?php
-$isIdentified = $_SESSION['auth'] ?? false;
-if (!$isIdentified) {
-    header('location:home');
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
