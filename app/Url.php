@@ -3,7 +3,6 @@ class Url
 {
     public function getUrlInfo()
     {
-        var_dump($_ENV);
         // recupere le lien d'entrée (vers index.php) : /mondossier/index.php
         $currentUrl = $_SERVER['PHP_SELF'];
         // recupere le lien en cours (dynamique)

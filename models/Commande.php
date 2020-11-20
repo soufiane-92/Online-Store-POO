@@ -34,5 +34,14 @@ class Commande extends Model
             $query = $this->_connection->prepare($sql);
             $query->execute([$produit, $idCommande, $quantite]);
         }
+        Panier::delete();
+    }
+
+    public function getAllCommande($idClient)
+    {
+        $sql = "SELECT * FROM `commande` WHERE commande.idClient =? ";
+        $query = $this->_connection->prepare($sql);
+        $query->execute([$idClient]);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 }

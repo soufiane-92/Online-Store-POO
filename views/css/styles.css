@@ -97,6 +97,10 @@ header .block_green {
     padding: 1rem;
     margin: 0 0 3rem 0;
 }
+/* List commande */
+.list__command {
+    min-height: 51rem;
+}
 /* Error page */
 .error_page {
     min-height: 45rem;
