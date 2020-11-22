@@ -8,7 +8,7 @@ $isIdentified = $_SESSION['auth'] ?? false;
         <span class="nav-link header__user"><?php echo $_SESSION['auth']['nom']; ?></span>
         </li>
         <li class="nav-item align-middle">
-            <a class="nav-link" href="<?=Application::$root?>commande">Vos Commandes</a>
+            <a class="nav-link" href="<?= Application::$root . 'history' ?>">Vos Commandes</a>
         </li>
         <li class="nav-item">
             <a class="nav-link block_green" href="<?=Application::$root?>logout">Logout</a>

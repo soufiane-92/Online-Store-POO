@@ -16,6 +16,8 @@ if (!Session::get('panier')) {
 }
 $routes = array(
     "/\/(dashboard)\/?/" => array('DashboardController', 'index'),
+    "/\/(history)\/?/" => array('HistoryController', 'index'),
+    "/\/(commande)\/?/" => array('CommandeController', 'index'),
     "/\/(panier)\/?/" => array('PanierController', 'index'),
     "/\/(catalogue)\/(.+)/" => array('CatalogueController', 'categorie'),
     "/\/(catalogue)\/?/" => array('CatalogueController', 'index'),

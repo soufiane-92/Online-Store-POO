@@ -34,69 +34,7 @@
     <div class="col-md-7 mx-auto" id="descriptions">
         <h2 class="home_title">Présentation graphique avec MCD</h2>
     </div>
-    <div class="col-md-10 mx-auto" id="descriptions">
+    <div class="col-md-10 mx-auto text-center" id="descriptions">
         <img class="img-fluid" src="<?=Application::$root?>images/mcd.png" alt="description mcd">
     </div>
 </div>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#paymentModal">
-  Mon Bouton
-</button>
-
-<div class="modal" tabindex="-1" role="dialog" id="paymentModal">
-  <form>
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Paiement en ligne</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-        <div class="modal-body">
-            <div class="col-xs-12">
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">N° de carte</label>
-                <input type="text" class="form-control" id="numCarte">
-              </div>
-            </div>
-            <div class="col-xs-12">
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">CVC</label>
-                <input type="text" class="form-control" id="cvc">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-12">
-                <label for="recipient-name" class="col-form-label">Date d'expiration</label>
-              </div>
-
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Mois</label>
-                    <input type="text" class="form-control" id="expirationMois">
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Année</label>
-                    <input type="text" class="form-control" id="expirationAnnee">
-                  </div>
-                </div>
-          </div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-lg btn-block btn-primary">Valider</button>
-        <button type="button" class="btn btn-lg btn-block btn-secondary" data-dismiss="modal">Annuler</button>
-      </div>
-    </div>
-  </div>
-</form>
-</div>
-<script type="text/javascript">
-$('#paymentModal').on('shown.bs.modal', function () {
-  // $('#myInput').trigger('focus')
-})
-
-</script>
