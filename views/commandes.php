@@ -105,6 +105,5 @@ foreach (Panier::show() as $produit) {
     </div>
     <script type="text/javascript">
         $('#paymentModal').on('shown.bs.modal', function() {
-            // $('#myInput').trigger('focus')
         })
     </script>

@@ -13,20 +13,14 @@ class HistoryController extends Controller
 
         $historyList = $history->getAllCommande($_SESSION['auth']['id']);
 
-        
-
-        if(isset($_POST['voirCommande']) && !empty($_POST['voirCommande'])){
-            $validate = false;
-            foreach($historyList['id'] as $id){
-                if ($id === $_POST['voirCommande']){
-                    $validate === true;
-                }
-            }
-            if ($validate) {
-                $details = $history->getAllProductsFromCommand($_POST['voirCommande']);
-            }
+        if (isset($_POST['voirCommande']) && !empty($_POST['voirCommande'])) {
+            $details = $history->getAllProductsFromCommand($_POST['voirCommande']);
+            $this->getView('historiqueCommandes', $details);
         }
-        $historyList['details']= $details;
         $this->getView('historiqueCommandes', $historyList);
+
+        if (isset($_POST['return'])) {
+            unset($_POST['voirCommande']);
+        }
     }
 }
