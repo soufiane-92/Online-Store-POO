@@ -51,7 +51,6 @@ class Commande extends Model
         INNER JOIN panier ON commande.id = panier.idCommande 
         INNER JOIN produit ON panier.idProduit = produit.id 
         WHERE commande.id = ?";
-        // print($sql);
         $query = $this->_connection->prepare($sql);
         $query->execute([$value]);
         return $query->fetchAll(PDO::FETCH_ASSOC);

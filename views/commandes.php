@@ -3,6 +3,7 @@ $total = 0;
 foreach (Panier::show() as $produit) {
     $total += round($produit['prix'] * $produit['quantite'], 2);
 }
+$erreurs = Session::get('flash');
 ?>
 <style>
     .command {
@@ -65,30 +66,29 @@ foreach (Panier::show() as $produit) {
                     <div class="modal-body">
                         <div class="col-xs-12">
                             <div class="form-group">
-                                <label for="recipient-name" class="col-form-label" >N° de carte</label>
-                                <input type="text" class="form-control" id="numCarte" value="4242 4242 4242 4242" name="numCarte">
+                                <label for="recipient-name" class="col-form-label">N° de carte</label>
+                                <input type="text" class="form-control" id="numCarte" name="numCarte">
                             </div>
                         </div>
                         <div class="col-xs-12">
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">CVC</label>
-                                <input type="text" class="form-control" id="cvc" value="123" name="cvc">
+                                <input type="text" class="form-control" id="cvc" name="cvc">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
                                 <label for="recipient-name" class="col-form-label">Date d'expiration</label>
                             </div>
-
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Mois</label>
-                                    <input type="text" class="form-control" id="expirationMois" value="02" name="expireMonth">
+                                    <input type="text" class="form-control" id="expirationMois" name="expireMonth">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="recipient-name" class="col-form-label" value="2025" name="expireYear">Année</label>
+                                    <label for="recipient-name" class="col-form-label" name="expireYear">Année</label>
                                     <input type="text" class="form-control" id="expirationAnnee" value="2025" name="expireYear">
                                 </div>
                             </div>
@@ -104,7 +104,5 @@ foreach (Panier::show() as $produit) {
         </form>
     </div>
     <script type="text/javascript">
-        $('#paymentModal').on('shown.bs.modal', function() {
-            // $('#myInput').trigger('focus')
-        })
+        $('#paymentModal').on('shown.bs.modal', function() {})
     </script>

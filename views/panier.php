@@ -1,6 +1,12 @@
 <div class="container mb-4">
   <div class="row">
-
+    <?php if (!empty(Session::get('flash'))) : ?>
+      <div class="col-md-12">
+        <div class="alert alert-danger" style="text-align: center;">
+          Erreur de carte bancaire.
+        </div>
+      </div>
+    <?php endif ?>
     <div class="col-12">
       <div class="text-center mt-30">
         <hr><br>
