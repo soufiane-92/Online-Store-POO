@@ -21,21 +21,26 @@ class CommandeController extends Controller
                         $cvc = $_POST['cvc'];
                         $dateExpire = $_POST['expireYear'] . $_POST['expireMonth'];
                         $dateExpire = intval($dateExpire);
-                        if (!$numCarte === "4242 4242 4242 4242") {
-                            array_push($erreur, "Num failed");
+                        if ($numCarte != "4242 4242 4242 4242") {
+                            array_push($erreur, "erreur");
                         }
-                        if (!strlen($cvc) === 3) {
-                            array_push($erreur, "cvc failed");
+                        if (strlen($cvc) !== 3) {
+                            array_push($erreur, "erreur");
                         }
-                        if (!strtotime($dateExpire) > intval(date("Ym"))) {
-                            array_push($erreur, "date failed");
+                        if (strtotime($dateExpire) < intval(date("Ym"))) {
+                            array_push($erreur, "erreur");
                         }
                         if (!empty($erreur)) {
-                            header("Location:panier");
+                            Session::set("flash", $erreur);
+                            header("Location:panier");              
                         } else {
                             $commande = new Commande();
                             $commande->setCommand();
-                            header("Location:home");
+                            if (!empty(Session::get("flash"))) {
+                                Session::remove('flash');
+                            }
+                            Session::set('success', 1);
+                            header("Location:history");
                         }
                     }
                 }else if (isset($_POST["commander"])) {

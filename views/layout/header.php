@@ -36,7 +36,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="<?=Application::$root?>catalogue">Catalogue</a>
                         </li>
-                        <?php if (Session::get('auth')) {?>
+                        <?php if (Session::get('auth')===2) {?>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?=Application::$root?>dashboard">Administration</a>
                             </li>
